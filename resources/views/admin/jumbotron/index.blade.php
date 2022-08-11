@@ -16,33 +16,45 @@
 
                 </div><!-- /.col -->
             </div><!-- /.row -->
-            
+
         </div><!-- /.container-fluid -->
     </div>
 
     <!-- /.content-header -->
     <section class="content">
         <div class="container-fluid">
+            <a href="{{ route('tambahdatajumbotron') }}" class="btn btn-success mb-2">Tambah +</a>
             <div class="row card card-custom">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                  </tr>
-                </tbody>
-            </table>
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{-- @foreach ($collection as $item) --}}
+
+                        <tr>
+                            {{-- <th scope="row">{{ $row->id }}</th> --}}
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>
+                                <a href="#" class="btn btn-info">Edit</a>
+                                <a href="#" class="btn btn-danger delete">Delete</a>
+                            </td>
+                        </tr>
+
+                        {{-- @endforeach --}}
+                    </tbody>
+
+                </table>
             </div>
         </div><!-- /.container-fluid -->
-      </section>
+    </section>
 
 
 @endsection

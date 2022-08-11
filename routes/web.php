@@ -20,7 +20,9 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/jumbotron', [JumbotronController::class, 'main'])->name('jumbotron');
+    Route::get('/jumbotron', [JumbotronController::class, 'index'])->name('jumbotron');
+    
+    Route::get('/tambahdata', [JumbotronController::class, 'create'])->name('tambahdatajumbotron');
 });
 
 // route::get('/login', [admincontroler::class, 'login'])->name('login');

@@ -12,8 +12,9 @@ class JumbotronController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function main()
+    public function index()
     {
+        //$data = Jumbotron::create($request->all());
         return view('admin/jumbotron/index');
     }
 
@@ -24,7 +25,7 @@ class JumbotronController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.jumbotron.tambahdata');
     }
 
     /**
@@ -35,7 +36,7 @@ class JumbotronController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // submit
     }
 
     /**
