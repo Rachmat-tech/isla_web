@@ -36,19 +36,23 @@
                     </thead>
 
                     <tbody>
-                        {{-- @foreach ($collection as $item) --}}
+                        @foreach ($jumbotron as $item)
 
                         <tr>
                             {{-- <th scope="row">{{ $row->id }}</th> --}}
-                            <th scope="row">1</th>
-                            <td>Mark</td>
+                            <td>
+                                {{ $loop->iteration }}
+                            </td>
+                            <td>
+                                <img style="width: 80px" src="{{ asset('storage/photos/jumbotron-img/'.$item->foto) }}" alt="">
+                            </td>
                             <td>
                                 <a href="#" class="btn btn-info">Edit</a>
                                 <a href="#" class="btn btn-danger delete">Delete</a>
                             </td>
                         </tr>
 
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
 
                 </table>

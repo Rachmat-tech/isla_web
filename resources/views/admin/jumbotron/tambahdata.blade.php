@@ -25,19 +25,27 @@
         <div class="container-fluid">
 
             
-                <div class="card">
-                    <div class="card-body">
-                        <form action="/insertdata" method="POST" enctype="multipart/form-data">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <form action="{{ route('savedatajumbotron') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
-                                <input type="file" name="foto" class="form-control">
+                                @error('foto')
+                                    <span class="text-danger"> {{ $message }}</span>
+                                @enderror
+                                <input type="file" name="foto" class="form-control" required accept=".jpg,.png,.jpeg">
                             </div>
                             <a href="{{ route('jumbotron') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
+        
                         </form>
                     </div>
+        
+        
                 </div>
+            </div>
         </div><!-- /.container-fluid -->
     </section>
 

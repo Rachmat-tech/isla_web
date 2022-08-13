@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Error;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Jumbotron;
 
 class JumbotronController extends Controller
 {
@@ -14,8 +17,10 @@ class JumbotronController extends Controller
      */
     public function index()
     {
-        //$data = Jumbotron::create($request->all());
-        return view('admin/jumbotron/index');
+        $data = [
+            'jumbotron' => Jumbotron::all()
+        ];
+        return view('admin/jumbotron/index',$data);
     }
 
     /**
@@ -36,7 +41,25 @@ class JumbotronController extends Controller
      */
     public function store(Request $request)
     {
-        // submit
+        // dd($request);
+        $request->validate([
+            'foto' => 'required|image|mimes:jpg,png,jpeg|max:2048'
+        ]);
+        DB::beginTransaction();
+        try{
+            $foto = $request->file('foto');
+            $name=time().rand(1, 10000).'.'.$foto->extension();
+            $datafoto = [
+                'foto' => $name
+            ];
+            Jumbotron::create($datafoto);
+            $foto->move (public_path().'/storage/photos/jumbotron-img', $name);
+            DB::commit();
+            return redirect()->route('jumbotron');
+        }catch(Error $e){
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
