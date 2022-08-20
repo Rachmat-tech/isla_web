@@ -7,30 +7,16 @@
       <div class="container">
         <div class="row">
           <div class="col-xl-4">
-            <h2 data-aos="fade-up"><span style="color:#c5c079; background: none">I</span>katan <span style="color:#c5c079; background: none">S</span>arjana Ke<span style="color:#c5c079; background: none">la</span>utan UNHAS</h2>
+            <h2 data-aos="fade-up"><span style="color:#c5c079; background: none">I</span>KATAN <span style="color:#c5c079; background: none">S</span>ARJANA KE<span style="color:#c5c079; background: none">LA</span>UTAN UNHAS</h2>
             <blockquote data-aos="fade-up" data-aos-delay="100">
               <p>JALAS VEVA JAYA MAHE</p>
             </blockquote>
             <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-              <a href="/contact" class="btn-get-started">Bergabung Bersama Kami</a>
+              <a href="#contact" class="btn-get-started">Bergabung Bersama Kami</a>
             </div>
           </div>
         </div>
       </div>
-{{-- 
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" style="background: url("../img/header/h1.jpg"); top center;">
-            {{-- <img class="d-block w-100" src="../assets/img/header/h1.jpg" alt="First slide"> --}}
-          </div>
-          <div class="carousel-item">
-            {{-- <img class="d-block w-100" src="../assets/img/header/h2.jpg" alt="Second slide"> --}}
-          </div>
-          <div class="carousel-item">
-            {{-- <img class="d-block w-100" src="../assets/img/header/h3.jpg" alt="Third slide"> --}}
-          </div>
-        </div>
-      </div> --}}
     </section>
     <!-- End Hero Section -->
 
@@ -59,7 +45,7 @@
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             {{-- <div class="embed-responsive embed-responsive-16by9"> --}}
-              <iframe width="600" height="345" src="https://www.youtube.com/embed/WzWjGbrfIOA">
+              <iframe width="600" height="345" src="https://www.youtube.com/embed/Fa_rNR__UV0">
               </iframe>
             {{-- </div> --}}
           </div>
@@ -68,8 +54,7 @@
       </div>
     </section><!-- End About Section -->
 
-
-        <!-- ======= Benefit Section ======= -->
+    <!-- ======= Benefit Section ======= -->
         <section id="benefit" class="benefit">
           <div class="container">
     
@@ -127,7 +112,7 @@
     
           </div>
         </section>
-        <!-- End Keuntungan Section -->
+    <!-- End Keuntungan Section -->
 
     <!-- ======= Program Section ======= -->
     <section id="program" class="program">
@@ -147,7 +132,7 @@
               <h4><sup>Business Empowerment and Alumni Development</sup></h4>
               <p>Mewadahi aspirasi alumni BINUS baik yang berprofesi sebagai Professional, maupun Entrepreneur, untuk dapat berkarya dan melakukan bisnis di Industri.</p>
               <div class="btn-wrap">
-                <a href="#" class="btn-program">Selengkapnya</a>
+                <a href="/proker-nasional" class="btn-program">Selengkapnya</a>
               </div>
             </div>
           </div>
@@ -159,7 +144,7 @@
               <h4><sup>Social and Engagement Activity</sup></h4>
              <p>Mewadahi jalinan persaudaraan sesama alumni melalui kebersamaan dengan membangun support sistem antar sesama alumni dan disini juga para alumni memberikan hati untuk membantu sesama alumni yang membutuhkan baik yang sakit ataupun mengalami musibah.</p>
               <div class="btn-wrap">
-                <a href="#" class="btn-program">Selengkapnya</a>
+                <a href="/proker-regional" class="btn-program">Selengkapnya</a>
               </div>
             </div>
           </div>
@@ -168,7 +153,6 @@
 
       </div>
     </section><!-- End program Section -->    
-
 
     <!-- ======= Data Statistik ======= -->
     <section id="data" class="data">
@@ -238,7 +222,7 @@
           </div>
   
           <div class="btn-wrap">
-            <a href="#" class="btn-loker">Selengkapnya</a>
+            <a href="/loker" class="btn-loker">Selengkapnya</a>
           </div>
         </div>
       </section>
@@ -310,7 +294,7 @@
           </div>
 
           <div class="btn-wrap">
-            <a href="#" class="btn-rpost">Semua Berita</a>
+            <a href="/berita" class="btn-rpost">Semua Berita</a>
           </div>
   
         </div>
@@ -416,11 +400,9 @@
             <div class="info">
               <img src="../assets/img/features-4.png" alt="" width="60%" height="50%">
             </div>
-
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left">
-
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="form-group mt-3">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Nama" required>
@@ -431,6 +413,7 @@
               <div class="form-group mt-3">
                 <input type="text" class="form-control" name="subject" id="nim" placeholder="NIM" required>
               </div>
+              <br>
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
@@ -446,7 +429,6 @@
               </div>
               <div class="text-center"><button type="submit">Send</button></div>
             </form>
-
           </div>
 
         </div>
