@@ -69,6 +69,10 @@ Route::get('/alumni', function () {
     return view('alumni');
 });
 
+Route::get('/galeri', function () {
+    return view('galeri');
+});
+
 Route::get('/kemitraan', function () {
     return view('kemitraan');
 });

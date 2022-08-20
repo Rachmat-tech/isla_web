@@ -12,48 +12,92 @@
         </div>
       </div><!-- End Breadcrumbs -->
   
-     <!-- ======= Team Section ======= -->
-     <section id="team" class="team">
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
       <div class="container">
 
         <div class="section-title" data-aos="zoom-out">
-          <h2>ISLA'S</h2>
+          <h2>Pimpinan</h2>
           <p>MPO</p>
         </div>
 
         <div class="row">
-          <h5>I. DEWAN PENASEHAT</h5>
-          <p>Anggota :</p>
-          <p>1. Menteri Kelautan dan Perikanan RI</p>
-          <p>2. Menteri Pendidikan dan Kebudayaan RI</p> 
-          <p>3. Kepala Staf TNI Angkatan Laut</p>  
-          <p>4. Rektor Universitas Hasanuddin</p>  
-          <p>5. Ketua Ikatan Alumni Universitas Hasanuddin (IKA-UNHAS)</p>  
-          <p>6. Dekan Fakultas Ilmu Kelautan dan Perikanan Universitas Hasanuddin</p>  
-          <p>7. Prof. Dr. Ir. H. Muhammad Natsir Nessa, M.S.</p>  
-          <p>8. H. Bambang Soesatyo, S.E., M.B.A.</p>  
-          <p>9. Dr. H. Amir Uskara</p>  
-          <p>10. Baso Syaifuddin, S.T., M.Si</p>  
-          <p>11. Hasanul Arif, S.T</p>  
-          <p>12. Nasruddin, S.T</p>  
-          <p>13. Awaluddin, S.T</p>  
-          <p>14. Dr. Muhammad Ilyas, S.T., M.Sc.</p>  
-          <p>15. Dr. Badaruddin A. Picunnang, S.T., M.Si.</p>  
-          <p>16. Moh. Zulficar Mochtar, S.T., M.Sc.</p>  
-      
-          <hr>
-          <h5>II. DEWAN PAKAR</h5>
-          <p>Ketua : Dr. Nurjannah Nurdin, S.T., M.Si.</p>
-          <p>Sekretaris : Nilmawati, S.Kel. M.Sc</p>
-          <hr>
-          <h5>III. MAJELIS PERTIMBANGAN ORGANISASI</h5>
-          <p>Ketua : Agus Ajar Bantung, S.T., M.Si.</p>
-          <p>Sekretaris : Astri Pratama, S.T., M.Sc</p>
-          <hr>
-          <h5>IV. PENGURUS HARIAN</h5>
-          <p>Ketua : Darwis Ismail, S.T., MMA</p>
-          <p>Sekretaris : Cahyadi Rasyid, S.T., M.Si</p>
-          <p>Bendahara : Hidayat Azis, S.Kel., M.Si</p>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up">
+              <div class="member-img">
+                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Walter White</h4>
+                <h6>Chief Executive Officer</h6>
+                <span>Motto : Hidup Bahagia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Sarah Jhonson</h4>
+                <h6>Product Manager</h6>
+                <span>Motto : Hidup Bahagia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <div class="member-img">
+                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>William Anderson</h4>
+                <h6>CTO</h6>
+                <span>Motto : Hidup Bahagia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="member-img">
+                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <h6>Accountant</h6>
+                <span>Motto : Hidup Bahagia</span>
+              </div>
+            </div>
+          </div>
 
         </div>
 

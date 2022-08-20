@@ -17,8 +17,8 @@
       <div class="container">
 
         <div class="section-title" data-aos="zoom-out">
-          <h2>ISLA's</h2>
-          <p>organization structure</p>
+          <h2>Struktur Organisasi</h2>
+          <p>ISLA</p>
         </div>
 
         <div class="row">

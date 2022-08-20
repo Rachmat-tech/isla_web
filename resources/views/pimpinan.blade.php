@@ -17,8 +17,8 @@
       <div class="container">
 
         <div class="section-title" data-aos="zoom-out">
-          <h2>ISLA</h2>
-          <p>Leaders</p>
+          <h2>Pimpinan</h2>
+          <p>ISLA</p>
         </div>
 
         <div class="row">
@@ -36,7 +36,8 @@
               </div>
               <div class="member-info">
                 <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
+                <h6>Chief Executive Officer</h6>
+                <span>Motto : Hidup Bahagia</span>
               </div>
             </div>
           </div>
@@ -54,7 +55,8 @@
               </div>
               <div class="member-info">
                 <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
+                <h6>Product Manager</h6>
+                <span>Motto : Hidup Bahagia</span>
               </div>
             </div>
           </div>
@@ -72,7 +74,8 @@
               </div>
               <div class="member-info">
                 <h4>William Anderson</h4>
-                <span>CTO</span>
+                <h6>CTO</h6>
+                <span>Motto : Hidup Bahagia</span>
               </div>
             </div>
           </div>
@@ -90,7 +93,8 @@
               </div>
               <div class="member-info">
                 <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
+                <h6>Accountant</h6>
+                <span>Motto : Hidup Bahagia</span>
               </div>
             </div>
           </div>

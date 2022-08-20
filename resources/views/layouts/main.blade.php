@@ -11,8 +11,7 @@
 
   <!-- Favicons -->
   <link href="../assets/img/logo.png" rel="icon">
-  {{-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> --}}
-
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -36,13 +35,6 @@
 
   <link rel="stylesheet" href="../assets/css/style.css">
 
-
-  <!-- =======================================================
-  * Template Name: Selecao - v4.8.0
-  * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -65,8 +57,8 @@
             <ul>
               <li><a href="/tentang">Tentang ISLA</a></li>
               <li><a href="/pimpinan">Struktur Pimpinan</a></li>
-              <li><a href="/organisasi">Struktur Organisasi</a></li>
               <li><a href="/mpo">Struktur MPO</a></li>
+              <li><a href="/organisasi">Struktur Organisasi</a></li>
               <li><a href="/wilayah">Pengurus Wilayah</a></li>
             </ul>
           </li>
@@ -83,16 +75,16 @@
               <li><a href="/proker-regional">Proker Regional</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#alumni"><span>Alumni & Kemitraan</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#alumni"><span>Alumni</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="/alumni">Alumni</a></li>
-              <li><a href="/formulir">Form Pendaftaran Anggota</a></li>
-              <li><a href="/kemitraan">Mitra</a></li>
+              <li><a href="/alumni">Alumni Award</a></li>
+              <li><a href="/galeri">Galeri</a></li>
+              {{-- <li><a href="/formulir">Form Pendaftaran Anggota</a></li>
+              <li><a href="/kemitraan">Mitra</a></li> --}}
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="/document">Document</a></li>
           <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
-
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -105,29 +97,60 @@
  
     @yield('content')
   
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <h4>IKATAN SARJANA KELAUTAN UNHAS</h4>
-      <p>Ruko Angsana Park, Jalan Angsana Raya Blok R, Rajawati Timur<br>Kalibata, Jakarta Selatan 12150 <br> Telp. 021 7949227</p>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+      <div class="footer-content">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-5 col-md-12 footer-info">
+              <a href="/" class="logo d-flex align-items-center">
+                <span>ISLA UNHAS</span>
+              </a>
+              <div class="social-links d-flex  mt-3">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              </div>
+            </div>
+
+  
+            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+              <h4>Our Address</h4>
+              <p>
+                Ruko Angsana Park, Jalan Angsana Raya Blok R, Rajawati Timur<br>
+                Kalibata, Jakarta Selatan 12150
+                <br><br>
+              </p>
+            </div>
+  
+            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+              <h4>Contact Us</h4>
+              <p>
+                <strong>Phone:</strong> 021 7949227<br>
+                <strong>Email:</strong> islaunhas@gmail.com<br>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="copyright">
-        &copy; Copyright <strong><span>ISLA</span></strong>
+  
+      <div class="footer-legal">
+        <div class="container">
+          <div class="copyright">
+            &copy; Copyright <strong><span>ISLA</span></strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nova-bootstrap-business-template/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/selecao-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+    </footer><!-- End Footer -->
+    <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

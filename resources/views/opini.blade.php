@@ -5,7 +5,7 @@
 <div class="breadcrumbs d-flex align-items-center" style="background-image: url('../assets/img/header/h2.jpg');">
     <div class="container position-relative d-flex flex-column align-items-center">
 
-      <h2>Berita Kelautan</h2>
+      <h2>Opini Alumni</h2>
 
     </div>
   </div><!-- End Breadcrumbs -->
