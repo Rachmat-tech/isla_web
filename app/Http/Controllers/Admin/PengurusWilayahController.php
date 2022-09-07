@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Error;
 use Illuminate\Http\Request;
+use App\Models\PengurusWilayah;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Jumbotron;
 
-class JumbotronController extends Controller
+class PengurusWilayahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,9 @@ class JumbotronController extends Controller
     public function index()
     {
         $data = [
-            'jumbotron' => Jumbotron::all()
+            'wilayah' => PengurusWilayah::all()
         ];
-        return view('admin.jumbotron.index',$data);
+        return view('admin.profile.pengurusWilayah.index', $data);
     }
 
     /**
@@ -30,7 +30,7 @@ class JumbotronController extends Controller
      */
     public function create()
     {
-        return view('admin.jumbotron.tambahdata');
+        return view('admin.profile.pengurusWilayah.tambahdata');
     }
 
     /**
@@ -41,22 +41,25 @@ class JumbotronController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate([
             'foto' => 'required|image|mimes:jpg,png,jpeg|max:2048'
         ]);
         DB::beginTransaction();
         try{
             $foto = $request->file('foto');
-            $name=time().rand(1, 10000).'.'.$foto->extension();
+            $name = time() .rand(1,10000) . '.' . $foto->extension();
             $datafoto = [
-                'foto' => $name
+                'foto' => $name,
+                'nama' => $request->nama,
+                'jabatan' => $request->jabatan,
+                'no_hp' => $request->no_hp,
+                'motto' => $request->motto
             ];
-            Jumbotron::create($datafoto);
-            $foto->move (public_path().'/storage/photos/jumbotron-img', $name);
+            PengurusWilayah::create($datafoto);
+            $foto->move(public_path() . '/storage/photos/pengurusWilayah-img', $name);
             DB::commit();
-            return redirect()->route('jumbotron');
-        }catch(Error $e){
+            return redirect()->route('pengurus');
+        } catch (Error $e){
             DB::rollBack();
             dd($e);
         }
@@ -70,7 +73,7 @@ class JumbotronController extends Controller
      */
     public function show($id)
     {
-        // $data = Jumbotron::find($id);
+        //
     }
 
     /**
@@ -81,11 +84,8 @@ class JumbotronController extends Controller
      */
     public function edit($id)
     {
-        
-        // dd($id);
-        $data = Jumbotron::find($id);
-        return view('admin.jumbotron.editdata', compact('data'));
-
+        $data = PengurusWilayah::find($id);
+        return view('admin.profile.pengurusWilayah.editdata', compact('data'));
     }
 
     /**
@@ -108,6 +108,9 @@ class JumbotronController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $data = PengurusWilayah::find($id);
+        $data->delete();
+        return redirect()->route('pengurus');
+
     }
 }

@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Error;
 use Illuminate\Http\Request;
+use App\Models\StrukturOrganisasi;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Jumbotron;
 
-class JumbotronController extends Controller
+
+class StrukturOrganisasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +19,9 @@ class JumbotronController extends Controller
     public function index()
     {
         $data = [
-            'jumbotron' => Jumbotron::all()
+            'struktur' => StrukturOrganisasi::all()
         ];
-        return view('admin.jumbotron.index',$data);
+        return view('admin.profile.strukturOrganisasi.index', $data);
     }
 
     /**
@@ -30,7 +31,7 @@ class JumbotronController extends Controller
      */
     public function create()
     {
-        return view('admin.jumbotron.tambahdata');
+        return view('admin.profile.strukturOrganisasi.tambahdata');
     }
 
     /**
@@ -41,22 +42,21 @@ class JumbotronController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate([
             'foto' => 'required|image|mimes:jpg,png,jpeg|max:2048'
         ]);
         DB::beginTransaction();
-        try{
+        try {
             $foto = $request->file('foto');
-            $name=time().rand(1, 10000).'.'.$foto->extension();
+            $name = time() . rand(1, 10000) . '.' . $foto->extension();
             $datafoto = [
                 'foto' => $name
             ];
-            Jumbotron::create($datafoto);
-            $foto->move (public_path().'/storage/photos/jumbotron-img', $name);
+            StrukturOrganisasi::create($datafoto);
+            $foto->move(public_path() . '/storage/photos/strukturOrganisasi-img', $name);
             DB::commit();
-            return redirect()->route('jumbotron');
-        }catch(Error $e){
+            return redirect()->route('struktur');
+        } catch (Error $e) {
             DB::rollBack();
             dd($e);
         }
@@ -70,7 +70,7 @@ class JumbotronController extends Controller
      */
     public function show($id)
     {
-        // $data = Jumbotron::find($id);
+        //
     }
 
     /**
@@ -81,11 +81,8 @@ class JumbotronController extends Controller
      */
     public function edit($id)
     {
-        
-        // dd($id);
-        $data = Jumbotron::find($id);
-        return view('admin.jumbotron.editdata', compact('data'));
-
+        $data = StrukturOrganisasi::find($id);
+        return view('admin.profile.strukturOrganisasi.editdata', compact('data'));
     }
 
     /**
@@ -97,7 +94,9 @@ class JumbotronController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = StrukturOrganisasi::find($id);
+        $data->update($request->all());
+        return redirect()->route('struktur');
     }
 
     /**
@@ -108,6 +107,8 @@ class JumbotronController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $data = StrukturOrganisasi::find($id);
+        $data->delete();
+        return redirect()->route('struktur')->with('success', 'data berhasil di hapus');
     }
 }

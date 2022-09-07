@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Error;
+use App\Models\Pimpinan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Jumbotron;
 
-class JumbotronController extends Controller
+class PimpinanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,9 @@ class JumbotronController extends Controller
     public function index()
     {
         $data = [
-            'jumbotron' => Jumbotron::all()
+            'pimpinan' => Pimpinan::all()
         ];
-        return view('admin.jumbotron.index',$data);
+        return view('admin.profile.pimpinan.index',$data);
     }
 
     /**
@@ -30,7 +30,7 @@ class JumbotronController extends Controller
      */
     public function create()
     {
-        return view('admin.jumbotron.tambahdata');
+        return view('admin.profile.pimpinan.tambahdata');
     }
 
     /**
@@ -41,25 +41,30 @@ class JumbotronController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        
         $request->validate([
             'foto' => 'required|image|mimes:jpg,png,jpeg|max:2048'
         ]);
         DB::beginTransaction();
         try{
             $foto = $request->file('foto');
-            $name=time().rand(1, 10000).'.'.$foto->extension();
+            $name = time() .rand(1,10000) . '.' . $foto->extension();
             $datafoto = [
-                'foto' => $name
+                'foto' => $name,
+                'nama' => $request->nama,
+                'jabatan' => $request->jabatan,
+                'no_hp' => $request->no_hp,
+                'motto' => $request->motto
             ];
-            Jumbotron::create($datafoto);
-            $foto->move (public_path().'/storage/photos/jumbotron-img', $name);
+            Pimpinan::create($datafoto);
+            $foto->move(public_path() . '/storage/photos/pimpinan-img', $name);
             DB::commit();
-            return redirect()->route('jumbotron');
-        }catch(Error $e){
+            return redirect()->route('pimpinan');
+        } catch (Error $e){
             DB::rollBack();
             dd($e);
         }
+        
     }
 
     /**
@@ -70,7 +75,7 @@ class JumbotronController extends Controller
      */
     public function show($id)
     {
-        // $data = Jumbotron::find($id);
+        //
     }
 
     /**
@@ -81,11 +86,8 @@ class JumbotronController extends Controller
      */
     public function edit($id)
     {
-        
-        // dd($id);
-        $data = Jumbotron::find($id);
-        return view('admin.jumbotron.editdata', compact('data'));
-
+        $data = Pimpinan::find($id);
+        return view('admin.profile.pimpinan.editdata', compact('data'));
     }
 
     /**
@@ -108,6 +110,8 @@ class JumbotronController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $data = Pimpinan::find($id);
+        $data->delete();
+        return redirect()->route('pimpinan');
     }
 }

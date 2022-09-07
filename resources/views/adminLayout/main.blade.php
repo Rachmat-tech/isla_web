@@ -66,7 +66,7 @@
                         <li class="nav-item">
                             <a href="{{route('jumbotron')}}" class="nav-link">
                                 <p>
-                                    Jumbotron
+                                    Dashboard
                                 </p>
                             </a>
                         </li>
@@ -79,32 +79,32 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tentang ISLA</p>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
-                                    <a href="pages/mailbox/compose.html" class="nav-link">
+                                    <a href="{{ route('pimpinan') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Struktur Pimpinan</p>
+                                        <p>Pimpinan ISLA</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/mailbox/read-mail.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Struktur Organisasi </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                                    <a href="{{ route('mpo') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Struktur MPO </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                                    <a href="{{route('struktur')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Struktur Organisasi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('pengurus') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Pengurus Wilayah </p>
                                     </a>
@@ -128,13 +128,13 @@
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Loker</p>
+                                        <p>Opini</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Opini</p>
+                                        <p>Info Loker</p>
                                     </a>
                                 </li>
                             </ul>
@@ -160,7 +160,35 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>   
+                        </li> 
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <p>
+                                    Alumni
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('alumni') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Alumni Award ISLA UH</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('galeri') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Galeri Isla UH</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Cerita Alumni</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-search"></i>
@@ -343,6 +371,22 @@
     {{-- <script src="{{asset('AdminLTE/dist/js/demo.js')}}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('AdminLTE/dist/js/pages/dashboard.js') }}"></script>
+    <script>
+        function previewImage()
+        {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent){
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
     @stack('scripts')
 </body>
 

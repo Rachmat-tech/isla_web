@@ -1,5 +1,5 @@
 @extends('adminLayout.main')
-@section('title', 'Jumbotron')
+@section('title', 'Dashboard')
 @section('css')
 
 @endsection
@@ -10,9 +10,6 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manajemen Jumbotron</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
 
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -22,42 +19,25 @@
 
     <!-- /.content-header -->
     <section class="content">
-        <div class="container-fluid">
-            <a href="{{ route('tambahdatajumbotron') }}" class="btn btn-success mb-2">Tambah +</a>
-            <div class="row card card-custom">
-                <table class="table">
-
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach ($jumbotron as $item)
-
-                        <tr>
-                            {{-- <th scope="row">{{ $row->id }}</th> --}}
-                            <td>
-                                {{ $loop->iteration }}
-                            </td>
-                            <td>
-                                <img style="width: 80px" src="{{ asset('storage/photos/jumbotron-img/'.$item->foto) }}" alt="">
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-info">Edit</a>
-                                <a href="#" class="btn btn-danger delete">Delete</a>
-                            </td>
-                        </tr>
-
-                        @endforeach
-                    </tbody>
-
-                </table>
+        {{-- ingat hapus controller dan route --}}
+        <div class="card card-custom">
+            <div class="m-3">
+                <h2 class="display-4">
+                    Selamat Datang Admin
+                    <span style="color: rgb(0, 80, 155)">ISLA UNHAS</span>
+                </h2>
+                <hr class="my-4">
+                <p>
+                    Selamat datang di <b>Dashboard Admin ISLA UNHAS</b>. Dashboard Admin adalah sistem yang memungkinkan Anggota
+                    ISLA UNHAS mengelola Website secara profesional. Sistem ini diharapkan dapat memberikan kemudahan kepada
+                    Anggota ISLA UNHAS untuk melakukan manajemen website dengan profesional.
+                </p>
+                <p>Selamat menggunakan fasilitas ini.</p>
+                <p class="lead">
+                </p>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
+
     </section>
 
 

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Error;
+use App\Models\GaleriIsla;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Jumbotron;
 
-class JumbotronController extends Controller
+class GaleriIslaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,9 @@ class JumbotronController extends Controller
     public function index()
     {
         $data = [
-            'jumbotron' => Jumbotron::all()
+            'galeri' => GaleriIsla::all()
         ];
-        return view('admin.jumbotron.index',$data);
+        return view('admin.alumni.galeriIsla.index', $data);
     }
 
     /**
@@ -30,7 +30,7 @@ class JumbotronController extends Controller
      */
     public function create()
     {
-        return view('admin.jumbotron.tambahdata');
+        return view('admin.alumni.galeriIsla.tambahdata');
     }
 
     /**
@@ -41,22 +41,22 @@ class JumbotronController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate([
             'foto' => 'required|image|mimes:jpg,png,jpeg|max:2048'
         ]);
         DB::beginTransaction();
         try{
             $foto = $request->file('foto');
-            $name=time().rand(1, 10000).'.'.$foto->extension();
+            $name = time() .rand(1,10000) . '.' . $foto->extension();
             $datafoto = [
-                'foto' => $name
+                'foto' => $name,
+                'keterangan' => $request->keterangan
             ];
-            Jumbotron::create($datafoto);
-            $foto->move (public_path().'/storage/photos/jumbotron-img', $name);
+            GaleriIsla::create($datafoto);
+            $foto->move(public_path() . '/storage/photos/galeriIsla-img', $name);
             DB::commit();
-            return redirect()->route('jumbotron');
-        }catch(Error $e){
+            return redirect()->route('galeri');
+        } catch (Error $e){
             DB::rollBack();
             dd($e);
         }
@@ -70,7 +70,7 @@ class JumbotronController extends Controller
      */
     public function show($id)
     {
-        // $data = Jumbotron::find($id);
+        //
     }
 
     /**
@@ -81,11 +81,8 @@ class JumbotronController extends Controller
      */
     public function edit($id)
     {
-        
-        // dd($id);
-        $data = Jumbotron::find($id);
-        return view('admin.jumbotron.editdata', compact('data'));
-
+        $data = GaleriIsla::find($id);
+        return view('admin.alumni.galeriIsla.editdata', compact('data'));
     }
 
     /**
@@ -108,6 +105,8 @@ class JumbotronController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $data = GaleriIsla::find($id);
+        $data->delete();
+        return redirect()->route('galeri');
     }
 }
