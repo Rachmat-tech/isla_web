@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AlumniAwardController;
+use App\Http\Controllers\Admin\BeritaKelautanController;
 use App\Http\Controllers\Admin\GaleriIsla;
 use App\Http\Controllers\Admin\GaleriIslaController;
 use Illuminate\Support\Facades\Route;
@@ -69,6 +70,15 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/editpengurus/{id}', [PengurusWilayahController::class, 'edit'])->name('editpengurus');
     Route::post('/editpengurus/{id}', [PengurusWilayahController::class, 'update'])->name('updatepengurus');
     Route::get('/deletepengurus/{id}', [PengurusWilayahController::class, 'destroy'])->name('deletepengurus');
+
+    //#Klanews
+    //berita kelautan
+    Route::get('/beritaKelautan', [BeritaKelautanController::class, 'index'])->name('berita');
+    Route::get('/tambahBerita', [BeritaKelautanController::class, 'create'])->name('tambahberita');
+    Route::post('/tambahBerita', [BeritaKelautanController::class, 'store'])->name('savedberita');
+    Route::get('/editBerita/{id}', [BeritaKelautanController::class, 'edit'])->name('editberita');
+    Route::post('/updateBerita/{id}', [BeritaKelautanController::class, 'update'])->name('updateberita');
+    Route::get('/deleteBerita/{id}', [BeritaKelautanController::class, 'destroy'])->name('deleteberita');
     
     //#Alumni
     //alumni award

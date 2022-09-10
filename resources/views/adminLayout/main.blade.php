@@ -47,7 +47,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="{{route('jumbotron')}}" class="brand-link">
                 <img src="{{ asset('AdminLTE/dist/img/logoisla.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Admin Isla</span>
@@ -120,7 +120,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('berita') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Berita</p>
                                     </a>
@@ -371,22 +371,7 @@
     {{-- <script src="{{asset('AdminLTE/dist/js/demo.js')}}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('AdminLTE/dist/js/pages/dashboard.js') }}"></script>
-    <script>
-        function previewImage()
-        {
-            const image = document.querySelector('#image');
-            const imgPreview = document.querySelector('.img-preview');
-
-            imgPreview.style.display = 'block';
-
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(image.files[0]);
-
-            oFReader.onload = function(oFREvent){
-                imgPreview.src = oFREvent.target.result;
-            }
-        }
-    </script>
+    
     @stack('scripts')
 </body>
 
