@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Error;
+use App\Models\Loker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Jumbotron;
 
-class JumbotronController extends Controller
+class LokerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,9 @@ class JumbotronController extends Controller
     public function index()
     {
         $data = [
-            'jumbotron' => Jumbotron::all()
+            'loker' => Loker::all()
         ];
-        return view('admin.jumbotron.index',$data);
+        return view('admin.klanews.loker.index', $data);
     }
 
     /**
@@ -30,7 +30,7 @@ class JumbotronController extends Controller
      */
     public function create()
     {
-        return view('admin.jumbotron.tambahdata');
+        return view('admin.klanews.loker.tambahdata');
     }
 
     /**
@@ -41,25 +41,34 @@ class JumbotronController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $request->validate([
-        //     'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
-        // ]);
-        // DB::beginTransaction();
-        // try{
-        //     $foto = $request->file('foto');
-        //     $name=time().rand(1, 10000).'.'.$foto->extension();
-        //     $datafoto = [
-        //         'foto' => $name
-        //     ];
-        //     Jumbotron::create($datafoto);
-        //     $foto->move (public_path().'/storage/photos/jumbotron-img', $name);
-        //     DB::commit();
-        //     return redirect()->route('jumbotron');
-        // }catch(Error $e){
-        //     DB::rollBack();
-        //     dd($e);
-        // }
+        $request->validate([
+            'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200',
+            'kategori' => 'required',
+            'perusahaan' => 'required',
+            'waktu_pendaftaran' => 'required',
+            'url' => 'required',
+            'isi' => 'required'
+        ]);
+        DB::beginTransaction();
+        try{
+            $foto = $request->file('foto');
+            $name = time() .rand(1,10000) . '.' . $foto->extension();
+            $datafoto =[
+                'foto' => $name,
+                'kategori' => $request->kategori,
+                'perusahaan' => $request->perusahaan,
+                'waktu_pendaftaran' => $request->waktu_pendaftaran,
+                'url' => $request->url,
+                'isi' => $request->isi
+            ];
+            Loker::create($datafoto);
+            $foto->move(public_path() . '/storage/photos/loker-img', $name);
+            DB::commit();
+            return redirect()->route('loker');
+        } catch (Error $e){
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -70,7 +79,7 @@ class JumbotronController extends Controller
      */
     public function show($id)
     {
-        // $data = Jumbotron::find($id);
+        //
     }
 
     /**
@@ -81,11 +90,8 @@ class JumbotronController extends Controller
      */
     public function edit($id)
     {
-        
-        // dd($id);
-        // $data = Jumbotron::find($id);
-        // return view('admin.jumbotron.editdata', compact('data'));
-
+        $data = Loker::find($id);
+        return view('admin.klanews.loker.editdata', compact('data'));
     }
 
     /**
@@ -108,6 +114,8 @@ class JumbotronController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
+        $data = Loker::find($id);
+        $data->delete();
+        return redirect()->route('loker');
     }
 }

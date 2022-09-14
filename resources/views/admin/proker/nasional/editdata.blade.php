@@ -1,5 +1,5 @@
 @extends('adminLayout.main')
-@section('title', 'Berita Kelautan')
+@section('title', 'Proker')
 @section('css')
 
 @endsection
@@ -28,12 +28,12 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form action="{{ route('editberita',$data->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('editnasional',$data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
                                 @if ($data->foto)
-                                <img src="{{ asset('storage/photos/beritaKelautan-img/' . $data->foto) }}" class="img-preview img-fluid mb-3 col-sm-4 d-block">
+                                <img src="{{ asset('storage/photos/nasional-img/' . $data->foto) }}" class="img-preview img-fluid mb-3 col-sm-4 d-block">
                                 @else
                                 <img class="img-preview img-fluid mb-3 col-sm-4">
                                 @endif
@@ -55,7 +55,7 @@
                                 <label for="floatingTextarea2">Isi Conten</label>
                                 <textarea name="isi" class="form-control">{!! $data->isi !!}</textarea>
                             </div>
-                            <a href="{{ route('berita') }}" class="btn btn-secondary">Cencel</a>
+                            <a href="{{ route('nasional') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

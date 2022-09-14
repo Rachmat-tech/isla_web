@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Error;
+use App\Models\CeritaAlumni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Jumbotron;
 
-class JumbotronController extends Controller
+class CeritaAlumniController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,9 @@ class JumbotronController extends Controller
     public function index()
     {
         $data = [
-            'jumbotron' => Jumbotron::all()
+            'cerita' => CeritaAlumni::all()
         ];
-        return view('admin.jumbotron.index',$data);
+        return view('admin.alumni.ceritaAlumni.index', $data);
     }
 
     /**
@@ -30,7 +30,7 @@ class JumbotronController extends Controller
      */
     public function create()
     {
-        return view('admin.jumbotron.tambahdata');
+        return view('admin.alumni.ceritaAlumni.tambahdata');
     }
 
     /**
@@ -41,25 +41,30 @@ class JumbotronController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $request->validate([
-        //     'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
-        // ]);
-        // DB::beginTransaction();
-        // try{
-        //     $foto = $request->file('foto');
-        //     $name=time().rand(1, 10000).'.'.$foto->extension();
-        //     $datafoto = [
-        //         'foto' => $name
-        //     ];
-        //     Jumbotron::create($datafoto);
-        //     $foto->move (public_path().'/storage/photos/jumbotron-img', $name);
-        //     DB::commit();
-        //     return redirect()->route('jumbotron');
-        // }catch(Error $e){
-        //     DB::rollBack();
-        //     dd($e);
-        // }
+         $request->validate([
+            'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200',
+            'nama' => 'required',
+            'profesi' => 'required',
+            'isi' => 'required'
+        ]);
+        DB::beginTransaction();
+        try{
+            $foto = $request->file('foto');
+            $name = time() .rand(1,10000) . '.' . $foto->extension();
+            $datafoto =[
+                'foto' => $name,
+                'nama' => $request->nama,
+                'profesi' => $request->profesi,
+                'isi' => $request->isi
+            ];
+            CeritaAlumni::create($datafoto);
+            $foto->move(public_path() . '/storage/photos/ceritaAlumni-img', $name);
+            DB::commit();
+            return redirect()->route('cerita');
+        } catch (Error $e){
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -70,7 +75,7 @@ class JumbotronController extends Controller
      */
     public function show($id)
     {
-        // $data = Jumbotron::find($id);
+        //
     }
 
     /**
@@ -81,11 +86,8 @@ class JumbotronController extends Controller
      */
     public function edit($id)
     {
-        
-        // dd($id);
-        // $data = Jumbotron::find($id);
-        // return view('admin.jumbotron.editdata', compact('data'));
-
+        $data = CeritaAlumni::find($id);
+        return view('admin.alumni.ceritaAlumni.editdata', compact('data'));
     }
 
     /**
@@ -108,6 +110,8 @@ class JumbotronController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
+        $data = CeritaAlumni::find($id);
+        $data->delete();
+        return redirect()->route('cerita');
     }
 }

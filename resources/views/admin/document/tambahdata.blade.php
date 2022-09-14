@@ -1,5 +1,5 @@
 @extends('adminLayout.main')
-@section('title', 'Jumbotron')
+@section('title', 'document')
 @section('css')
 
 @endsection
@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Edit Data</h1>
+                    <h1 class="m-0">Tambah Data</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
 
@@ -28,16 +28,24 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form action="{{ route('editdatajumbotron',$data->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('saveddocument') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label class="form-label">Input Foto</label>
-                                @error('foto')
+                                <label class="form-label">Nama Document</label>
+                                <input type="text" name="nama_document" value="{{ old('nama_document') }}" required class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Deskripsi</label>
+                                <textarea class="form-control" name="desc_document" cols="30" rows="10">{{ old('desc_document') }}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Document</label>
+                                @error('document')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
-                                <input type="file" name="foto" class="form-control" value="{{ $data->foto }}" required accept=".jpg,.png,.jpeg">
+                                <input type="file" name="document" class="form-control" required accept=".pdf">
                             </div>
-                            <a href="{{ route('jumbotron') }}" class="btn btn-secondary">Cencel</a>
+                            <a href="{{ route('document') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
         
                         </form>
@@ -53,4 +61,5 @@
 @endsection
 
 @push('scripts')
+
 @endpush

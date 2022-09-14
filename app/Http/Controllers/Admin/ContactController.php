@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Error;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Jumbotron;
+use App\Models\Contact;
+use Illuminate\Http\Request;
 
-class JumbotronController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,9 @@ class JumbotronController extends Controller
     public function index()
     {
         $data = [
-            'jumbotron' => Jumbotron::all()
+            'contact' => Contact::all()
         ];
-        return view('admin.jumbotron.index',$data);
+        return view('admin.contact.index', $data);
     }
 
     /**
@@ -30,7 +28,7 @@ class JumbotronController extends Controller
      */
     public function create()
     {
-        return view('admin.jumbotron.tambahdata');
+        return view('admin.contact.tambahdata');
     }
 
     /**
@@ -41,25 +39,16 @@ class JumbotronController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $request->validate([
-        //     'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
-        // ]);
-        // DB::beginTransaction();
-        // try{
-        //     $foto = $request->file('foto');
-        //     $name=time().rand(1, 10000).'.'.$foto->extension();
-        //     $datafoto = [
-        //         'foto' => $name
-        //     ];
-        //     Jumbotron::create($datafoto);
-        //     $foto->move (public_path().'/storage/photos/jumbotron-img', $name);
-        //     DB::commit();
-        //     return redirect()->route('jumbotron');
-        // }catch(Error $e){
-        //     DB::rollBack();
-        //     dd($e);
-        // }
+        // dd($request->all());
+        // $data = new Contact;
+        // $data->location = $request->location;
+        // $data->email = $request->email;
+        // $data->instagram = $request->instagram;
+        // $data->no_hp = $request->no_hp;
+        // $data->save();
+
+        $data = Contact::create($request->all());
+        return redirect()->route('contact');
     }
 
     /**
@@ -70,7 +59,7 @@ class JumbotronController extends Controller
      */
     public function show($id)
     {
-        // $data = Jumbotron::find($id);
+        //
     }
 
     /**
@@ -81,11 +70,8 @@ class JumbotronController extends Controller
      */
     public function edit($id)
     {
-        
-        // dd($id);
-        // $data = Jumbotron::find($id);
-        // return view('admin.jumbotron.editdata', compact('data'));
-
+        $data = Contact::find($id);
+        return view('admin.contact.editdata', compact('data'));
     }
 
     /**
@@ -108,6 +94,8 @@ class JumbotronController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
+        $data = Contact::find($id);
+        $data->delete();
+        return redirect()->route('contact');
     }
 }

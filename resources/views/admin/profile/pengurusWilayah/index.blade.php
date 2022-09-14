@@ -52,7 +52,7 @@
                             </td>
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->jabatan }}</td>
-                            <td>{{ $item->no_hp }}</td>
+                            <td>0{{ $item->no_hp }}</td>
                             <td>{{ $item->motto }}</td>
                             <td>
                                 <a href="{{ route('editpengurus', $item->id) }}" class="btn btn-info">Edit</a>

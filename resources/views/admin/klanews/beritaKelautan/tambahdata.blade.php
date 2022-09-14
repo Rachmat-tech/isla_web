@@ -46,7 +46,7 @@
                                 <label class="form-label">Date</label>
                                 <input type="text" name="date_create" class="form-control">
                             </div>
-                            <div class="form-floating">
+                            <div class="form-floating mb-2">
                                 <label for="floatingTextarea2">Isi Conten</label>
                                 <textarea name="isi" class="form-control" ></textarea>
                             </div>

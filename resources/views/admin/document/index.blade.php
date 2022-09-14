@@ -1,5 +1,5 @@
 @extends('adminLayout.main')
-@section('title', 'Pimpinan Kami')
+@section('title', 'Document')
 @section('css')
 
 @endsection
@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Pimpinan Kami</h1>
+                    <h1 class="m-0">Document Kami</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
 
@@ -23,40 +23,33 @@
     <!-- /.content-header -->
     <section class="content">
         <div class="container-fluid">
-            <a href="{{ route('tambahpimpinan') }}" class="btn btn-success mb-2">Tambah +</a>
+            <a href="{{ route('tambahdocument') }}" class="btn btn-success mb-2">Tambah +</a>
             <div class="row card card-custom">
                 <table class="table">
 
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Jabatan</th>
-                            <th scope="col">No Hp</th>
-                            <th scope="col">Motto</th>
+                            <th scope="col">Nama Document</th>
+                            <th scope="col">Deskripsi</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($pimpinan as $item)
+                        @foreach ($document as $item)
 
                         <tr>
                             {{-- <th scope="row">{{ $row->id }}</th> --}}
                             <td>
                                 {{ $loop->iteration }}
                             </td>
+                            <td>{{ $item->nama_document }}</td>
+                            <td>{{ $item->deskripsi }}</td>
                             <td>
-                                <img style="width: 80px" src="{{ asset('storage/photos/pimpinan-img/'.$item->foto) }}" alt="">
-                            </td>
-                            <td>{{ $item->nama }}</td>
-                            <td>{{ $item->jabatan }}</td>
-                            <td>0{{ $item->no_hp }}</td>
-                            <td>{{ $item->motto }}</td>
-                            <td>
-                                <a href="{{ route('editpimpinan', $item->id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('deletepimpinan', $item->id) }}" class="btn btn-danger delete" data-id="{{ $item->id }}" data-foto="{{ $item->foto }}">Delete</a>
+                                <a href="{{ asset('storage/document/'.$item->document) }}" class="btn btn-info">Download</a>
+                                <a href="{{ route('editdocument', $item->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('deletedocument', $item->id) }}" class="btn btn-danger delete" data-id="{{ $item->id }}" data-foto="{{ $item->document }}">Delete</a>
                             </td>
                         </tr>
 

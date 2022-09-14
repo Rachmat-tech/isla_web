@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Error;
+use App\Models\Regional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Jumbotron;
 
-class JumbotronController extends Controller
+class RegionalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,9 @@ class JumbotronController extends Controller
     public function index()
     {
         $data = [
-            'jumbotron' => Jumbotron::all()
+            'regional' => Regional::all()
         ];
-        return view('admin.jumbotron.index',$data);
+        return view('admin.proker.regional.index', $data);
     }
 
     /**
@@ -30,7 +30,7 @@ class JumbotronController extends Controller
      */
     public function create()
     {
-        return view('admin.jumbotron.tambahdata');
+        return view('admin.proker.regional.tambahdata');
     }
 
     /**
@@ -41,25 +41,30 @@ class JumbotronController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $request->validate([
-        //     'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
-        // ]);
-        // DB::beginTransaction();
-        // try{
-        //     $foto = $request->file('foto');
-        //     $name=time().rand(1, 10000).'.'.$foto->extension();
-        //     $datafoto = [
-        //         'foto' => $name
-        //     ];
-        //     Jumbotron::create($datafoto);
-        //     $foto->move (public_path().'/storage/photos/jumbotron-img', $name);
-        //     DB::commit();
-        //     return redirect()->route('jumbotron');
-        // }catch(Error $e){
-        //     DB::rollBack();
-        //     dd($e);
-        // }
+        $request->validate([
+            'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200',
+            'judul' => 'required',
+            'date_create' => 'required',
+            'isi' => 'required'
+        ]);
+        DB::beginTransaction();
+        try {
+            $foto = $request->file('foto');
+            $name = time() . rand(1, 10000) . '.' . $foto->extension();
+            $datafoto = [
+                'foto' => $name,
+                'judul' => $request->judul,
+                'date_create' => $request->date_create,
+                'isi' => $request->isi
+            ];
+            Regional::create($datafoto);
+            $foto->move(public_path() . '/storage/photos/regional-img', $name);
+            DB::commit();
+            return redirect()->route('regional');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -70,7 +75,7 @@ class JumbotronController extends Controller
      */
     public function show($id)
     {
-        // $data = Jumbotron::find($id);
+        //
     }
 
     /**
@@ -81,11 +86,8 @@ class JumbotronController extends Controller
      */
     public function edit($id)
     {
-        
-        // dd($id);
-        // $data = Jumbotron::find($id);
-        // return view('admin.jumbotron.editdata', compact('data'));
-
+        $data = Regional::find($id);
+        return view('admin.proker.regional.editdata', compact('data'));
     }
 
     /**
@@ -108,6 +110,8 @@ class JumbotronController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
+        $data = Regional::find($id);
+        $data->delete();
+        return redirect()->route('regional');
     }
 }

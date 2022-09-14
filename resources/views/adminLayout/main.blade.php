@@ -126,13 +126,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('opini') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Opini</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('loker') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Info Loker</p>
                                     </a>
@@ -148,13 +148,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('nasional') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Proker Nasional</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('regional') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Proker Regional</p>
                                     </a>
@@ -182,12 +182,33 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('cerita') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Cerita Alumni</p>
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('document') }}" class="nav-link">
+                                <p>
+                                    Document
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <p>
+                                    Calon Anggota
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('contact') }}" class="nav-link">
+                                <p>
+                                    Contact
+                                </p>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">

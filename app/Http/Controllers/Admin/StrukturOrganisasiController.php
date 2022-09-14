@@ -43,7 +43,7 @@ class StrukturOrganisasiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'foto' => 'required|image|mimes:jpg,png,jpeg|max:2048'
+            'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
         ]);
         DB::beginTransaction();
         try {

@@ -1,5 +1,5 @@
 @extends('adminLayout.main')
-@section('title', 'Berita Kelautan')
+@section('title', 'Cerita Alumni')
 @section('css')
 
 @endsection
@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Edit Data</h1>
+                    <h1 class="m-0">Tambah Data</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
 
@@ -24,43 +24,39 @@
     <section class="content">
         <div class="container-fluid">
 
-
+            
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form action="{{ route('editberita',$data->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('savedcerita') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
-                                @if ($data->foto)
-                                <img src="{{ asset('storage/photos/beritaKelautan-img/' . $data->foto) }}" class="img-preview img-fluid mb-3 col-sm-4 d-block">
-                                @else
                                 <img class="img-preview img-fluid mb-3 col-sm-4">
-                                @endif
-
                                 @error('foto')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
                                 <input type="file" name="foto" class="form-control" id="image" required accept=".jpg,.png,.jpeg" onchange="previewImage()">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Judul</label>
-                                <input type="text" name="judul" class="form-control" value="{{ $data->judul }}">
+                                <label class="form-label">Nama</label>
+                                <input type="text" name="nama" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Date</label>
-                                <input type="text" name="date_create" class="form-control" value="{{ $data->date_create }}">
+                                <label class="form-label">Profesi</label>
+                                <input type="text" name="profesi" class="form-control">
                             </div>
                             <div class="form-floating mb-2">
                                 <label for="floatingTextarea2">Isi Conten</label>
-                                <textarea name="isi" class="form-control">{!! $data->isi !!}</textarea>
+                                <textarea name="isi" class="form-control" ></textarea>
                             </div>
-                            <a href="{{ route('berita') }}" class="btn btn-secondary">Cencel</a>
+                            <a href="{{ route('cerita') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
+        
                         </form>
                     </div>
-
-
+        
+        
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -127,5 +123,4 @@
 
   tinymce.init(editor_config);
 </script>
-
 @endpush
