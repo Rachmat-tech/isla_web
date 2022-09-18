@@ -30,6 +30,7 @@
                     <div class="col-8">
                         <form action="{{ route('saveddocument') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            
                             <div class="mb-3">
                                 <label class="form-label">Nama Document</label>
                                 <input type="text" name="nama_document" value="{{ old('nama_document') }}" required class="form-control">

@@ -7,6 +7,7 @@ use App\Models\Regional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\StrukturOrganisasi;
 
 class RegionalController extends Controller
 {

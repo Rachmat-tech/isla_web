@@ -28,8 +28,9 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form action="{{ route('editaward',$data->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('updateaward',$data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('post')
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
                                 @if ($data->foto)
@@ -41,7 +42,7 @@
                                 @error('foto')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
-                                <input type="file" name="foto" class="form-control" id="image" required accept=".jpg,.png,.jpeg" onchange="previewImage()">
+                                <input type="file" name="foto" class="form-control" id="image" accept=".jpg,.png,.jpeg" onchange="previewImage()">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Keterangan</label>

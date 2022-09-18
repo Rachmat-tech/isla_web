@@ -7,6 +7,7 @@ use App\Models\Pimpinan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class PimpinanController extends Controller
 {
@@ -20,7 +21,7 @@ class PimpinanController extends Controller
         $data = [
             'pimpinan' => Pimpinan::all()
         ];
-        return view('admin.profile.pimpinan.index',$data);
+        return view('admin.profile.pimpinan.index', $data);
     }
 
     /**
@@ -41,14 +42,14 @@ class PimpinanController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
         ]);
         DB::beginTransaction();
-        try{
+        try {
             $foto = $request->file('foto');
-            $name = time() .rand(1,10000) . '.' . $foto->extension();
+            $name = time() . rand(1, 10000) . '.' . $foto->extension();
             $datafoto = [
                 'foto' => $name,
                 'nama' => $request->nama,
@@ -60,11 +61,10 @@ class PimpinanController extends Controller
             $foto->move(public_path() . '/storage/photos/pimpinan-img', $name);
             DB::commit();
             return redirect()->route('pimpinan');
-        } catch (Error $e){
+        } catch (Error $e) {
             DB::rollBack();
             dd($e);
         }
-        
     }
 
     /**
@@ -99,7 +99,39 @@ class PimpinanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pimpinan = Pimpinan::findOrFail($id);
+        $request->validate([
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
+            'nama' => 'required',
+            'jabatan' => 'required',
+            'no_hp' => 'required',
+            'motto' => 'required'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/pimpinan-img/' . $pimpinan->foto)) {
+                    File::delete('storage/photos/pimpinan-img/' . $pimpinan->foto);
+                }
+
+                $nameFile = time() .  rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/pimpinan-img';
+                $request->foto->storeAs($path, $nameFile);
+                $pimpinan->foto = $nameFile;
+            }
+            $pimpinan->nama = $request->nama;
+            $pimpinan->jabatan = $request->jabatan;
+            $pimpinan->no_hp = $request->no_hp;
+            $pimpinan->motto = $request->motto;
+
+            $pimpinan->save();
+
+            DB::commit();
+            return redirect()->route('pimpinan');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -111,6 +143,9 @@ class PimpinanController extends Controller
     public function destroy($id)
     {
         $data = Pimpinan::find($id);
+        if (File::exists('storage/photos/pimpinan-img/' . $data->foto)) {
+            File::delete('storage/photos/pimpinan-img/' . $data->foto);
+        }
         $data->delete();
         return redirect()->route('pimpinan');
     }

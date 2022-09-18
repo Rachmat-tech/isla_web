@@ -53,7 +53,7 @@ class DocumentController extends Controller
             Document::create($datadocument);
             $document->move(public_path() . '/storage/document', $name);
             DB::commit();
-            return redirect()->route('document');
+            return redirect()->route('document'); 
         } catch (Error $e){
             DB::rollBack();
             dd($e);
@@ -92,13 +92,14 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Document $document)
     {
-        $request->validate([
-            'document' => 'required|file|mimes:pdf',
+       $request->validate([
+            'document' => 'file|mimes:pdf',
             'nama_document' => 'required',
-            'desc_document' => 'required'
+            'deskripsi' => 'required'
         ]);
+        
         DB::beginTransaction();
         try{
             $document = $request->file('document');
@@ -110,6 +111,7 @@ class DocumentController extends Controller
             ];
             Document::create($datadocument);
             $document->move(public_path() . '/storage/document', $name);
+            // $document->update($request->all());
             DB::commit();
             return redirect()->route('document');
         } catch (Error $e){

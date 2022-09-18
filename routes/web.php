@@ -150,7 +150,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/tambahDocument', [DocumentController::class, 'create'])->name('tambahdocument');
     Route::post('/tambahDocument', [DocumentController::class, 'store'])->name('saveddocument');
     Route::get('/editDocument/{id}', [DocumentController::class, 'edit'])->name('editdocument');
-    Route::post('/editDocument/{id}', [DocumentController::class, 'update'])->name('updatedocument');
+    Route::post('/editDocument/{document:id}', [DocumentController::class, 'update'])->name('updatedocument');
     Route::get('/deleteDocument/{id}', [DocumentController::class, 'destroy'])->name('deletedocument');
     
     //Contact
@@ -160,6 +160,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/editContact/{id}', [ContactController::class, 'edit'])->name('editcontact');
     Route::post('/editContact/{id}', [ContactController::class, 'update'])->name('updatecontact');
     Route::get('/deleteContact/{id}', [ContactController::class, 'destroy'])->name('deletecontact');
+    
+    //calon anggota
+    // Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+    // Route::get('/deleteContact/{id}', [ContactController::class, 'destroy'])->name('deletecontact');
 });
 
 // route::get('/login', [admincontroler::class, 'login'])->name('login');

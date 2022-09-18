@@ -28,7 +28,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form action="{{ route('editstruktur',$data->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('updatestruktur',$data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
@@ -42,7 +42,7 @@
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
                                 <input type="file" name="foto" class="form-control" value="{{ $data->foto }}"
-                                    required accept=".jpg,.png,.jpeg">
+                                    required id="image" accept=".jpg,.png,.jpeg" onchange="previewImage()">
                             </div>
                             <a href="{{ route('struktur') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>

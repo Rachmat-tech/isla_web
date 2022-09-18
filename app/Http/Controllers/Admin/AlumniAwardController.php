@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Error;
 use App\Models\AlumniAward;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class AlumniAwardController extends Controller
 {
@@ -19,7 +21,7 @@ class AlumniAwardController extends Controller
         $data = [
             'alumni' => AlumniAward::all()
         ];
-        return view('admin.alumni.alumniaward.index',$data);
+        return view('admin.alumni.alumniaward.index', $data);
     }
 
     /**
@@ -41,21 +43,22 @@ class AlumniAwardController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
+            'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200',
+            'keterangan' => 'required'
         ]);
         DB::beginTransaction();
-        try{
+        try {
             $foto = $request->file('foto');
-            $name=time().rand(1,10000). '.' .$foto->extension();
-            $datafoto= [
+            $name = time() . rand(1, 10000) . '.' . $foto->extension();
+            $datafoto = [
                 'foto' => $name,
                 'keterangan' => $request->keterangan
             ];
             AlumniAward::create($datafoto);
-            $foto->move (public_path().'/storage/photos/alumniaward-img', $name);
+            $foto->move(public_path() . '/storage/photos/alumniaward-img', $name);
             DB::commit();
             return redirect()->route('alumni');
-        }catch(Error $e){
+        } catch (Error $e) {
             DB::rollBack();
             dd($e);
         }
@@ -81,7 +84,7 @@ class AlumniAwardController extends Controller
     public function edit($id)
     {
         $data = AlumniAward::find($id);
-        return view ('admin.alumni.alumniaward.editdata', compact('data'));
+        return view('admin.alumni.alumniaward.editdata', compact('data'));
     }
 
     /**
@@ -93,7 +96,34 @@ class AlumniAwardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $alumni = AlumniAward::findOrFail($id);
+        $request->validate([
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
+            'keterangan' => 'required'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/alumniaward-img/' . $alumni->foto)) {
+                    File::delete('storage/photos/alumniaward-img/' . $alumni->foto);
+                }
+
+                $namaFile = time() . rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/alumniaward-img';
+                $request->foto->storeAs($path, $namaFile);
+                $alumni->foto = $namaFile;
+            }
+
+            $alumni->keterangan = $request->keterangan;
+
+            $alumni->save();
+
+            DB::commit();
+            return redirect()->route('alumni');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -105,6 +135,9 @@ class AlumniAwardController extends Controller
     public function destroy($id)
     {
         $data = AlumniAward::find($id);
+        if (File::exists('storage/photos/alumniaward-img/' . $data->foto)) {
+            File::delete('storage/photos/alumniaward-img/' . $data->foto);
+        }
         $data->delete();
         return redirect()->route('alumni');
     }

@@ -7,6 +7,7 @@ use App\Models\StrukturMpo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class StrukturMpoController extends Controller
 {
@@ -45,9 +46,9 @@ class StrukturMpoController extends Controller
             'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
         ]);
         DB::beginTransaction();
-        try{
+        try {
             $foto = $request->file('foto');
-            $name = time() .rand(1,10000) . '.' . $foto->extension();
+            $name = time() . rand(1, 10000) . '.' . $foto->extension();
             $datafoto = [
                 'foto' => $name,
                 'nama' => $request->nama,
@@ -59,7 +60,7 @@ class StrukturMpoController extends Controller
             $foto->move(public_path() . '/storage/photos/mpo-img', $name);
             DB::commit();
             return redirect()->route('mpo');
-        } catch (Error $e){
+        } catch (Error $e) {
             DB::rollBack();
             dd($e);
         }
@@ -97,7 +98,35 @@ class StrukturMpoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mpo = StrukturMpo::findOrFail($id);
+        $request->validate([
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/mpo-img/' . $mpo->foto)) {
+                    File::delete('storage/photos/mpo-img/' . $mpo->foto);
+                }
+
+                $nameFile = time() .  rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/mpo-img';
+                $request->foto->storeAs($path, $nameFile);
+                $mpo->foto = $nameFile;
+            }
+            $mpo->nama = $request->nama;
+            $mpo->jabatan = $request->jabatan;
+            $mpo->no_hp = $request->no_hp;
+            $mpo->motto = $request->motto;
+
+            $mpo->save();
+
+            DB::commit();
+            return redirect()->route('mpo');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -109,6 +138,9 @@ class StrukturMpoController extends Controller
     public function destroy($id)
     {
         $data = StrukturMpo::find($id);
+        if (File::exists('storage/photos/mpo-img/' . $data->foto)) {
+            File::delete('storage/photos/mpo-img/' . $data->foto);
+        }
         $data->delete();
         return redirect()->route('mpo');
     }

@@ -28,7 +28,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form action="{{ route('editcontact',$data->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('updatecontact', $data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Location</label>
@@ -61,5 +61,4 @@
 @endsection
 
 @push('scripts')
-
 @endpush

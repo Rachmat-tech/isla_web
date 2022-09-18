@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\PengurusWilayah;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class PengurusWilayahController extends Controller
 {
@@ -45,9 +46,9 @@ class PengurusWilayahController extends Controller
             'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
         ]);
         DB::beginTransaction();
-        try{
+        try {
             $foto = $request->file('foto');
-            $name = time() .rand(1,10000) . '.' . $foto->extension();
+            $name = time() . rand(1, 10000) . '.' . $foto->extension();
             $datafoto = [
                 'foto' => $name,
                 'nama' => $request->nama,
@@ -59,7 +60,7 @@ class PengurusWilayahController extends Controller
             $foto->move(public_path() . '/storage/photos/pengurusWilayah-img', $name);
             DB::commit();
             return redirect()->route('pengurus');
-        } catch (Error $e){
+        } catch (Error $e) {
             DB::rollBack();
             dd($e);
         }
@@ -97,7 +98,39 @@ class PengurusWilayahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pengurus = PengurusWilayah::findOrFail($id);
+        $request->validate([
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
+            'nama' => 'required',
+            'jabatan' => 'required',
+            'no_hp' => 'required',
+            'motto' => 'required'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/pengurusWilayah-img/' . $pengurus->foto)) {
+                    File::delete('storage/photos/pengurusWilayah-img/' . $pengurus->foto);
+                }
+
+                $nameFile = time() .  rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/pengurusWilayah-img';
+                $request->foto->storeAs($path, $nameFile);
+                $pengurus->foto = $nameFile;
+            }
+            $pengurus->nama = $request->nama;
+            $pengurus->jabatan = $request->jabatan;
+            $pengurus->no_hp = $request->no_hp;
+            $pengurus->motto = $request->motto;
+
+            $pengurus->save();
+
+            DB::commit();
+            return redirect()->route('pengurus');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -109,8 +142,10 @@ class PengurusWilayahController extends Controller
     public function destroy($id)
     {
         $data = PengurusWilayah::find($id);
+        if (File::exists('storage/photos/pengurusWilayah-img/' . $data->foto)) {
+            File::delete('storage/photos/pengurusWilayah-img/' . $data->foto);
+        }
         $data->delete();
         return redirect()->route('pengurus');
-
     }
 }

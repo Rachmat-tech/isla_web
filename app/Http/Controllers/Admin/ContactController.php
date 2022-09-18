@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Error;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class ContactController extends Controller
 {
@@ -46,7 +48,7 @@ class ContactController extends Controller
         // $data->instagram = $request->instagram;
         // $data->no_hp = $request->no_hp;
         // $data->save();
-
+        
         $data = Contact::create($request->all());
         return redirect()->route('contact');
     }
@@ -83,7 +85,10 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contact = Contact::find($id);
+        
+        $contact->update($request->all());
+        return redirect()->route('contact');
     }
 
     /**

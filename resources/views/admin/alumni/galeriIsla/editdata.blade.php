@@ -28,24 +28,27 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form action="{{ route('editgaleri',$data->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('updategaleri', $data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('post')
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
                                 @if ($data->foto)
-                                <img src="{{ asset('storage/photos/galeriIsla-img/' . $data->foto) }}" class="img-preview img-fluid mb-3 col-sm-4 d-block">
+                                    <img src="{{ asset('storage/photos/galeriIsla-img/' . $data->foto) }}"
+                                        class="img-preview img-fluid mb-3 col-sm-4 d-block">
                                 @else
-                                <img class="img-preview img-fluid mb-3 col-sm-4">
+                                    <img class="img-preview img-fluid mb-3 col-sm-4">
                                 @endif
 
                                 @error('foto')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
-                                <input type="file" name="foto" class="form-control" id="image" required accept=".jpg,.png,.jpeg" onchange="previewImage()">
+                                <input type="file" name="foto" value="{{ $data->foto }}" class="form-control" id="image" accept=".jpg,.png,.jpeg" onchange="previewImage()">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Keterangan</label>
-                                <input type="text" name="keterangan" class="form-control" value="{{ $data->keterangan }}">
+                                <input type="text" name="keterangan" class="form-control"
+                                    value="{{ $data->keterangan }}">
                             </div>
                             <a href="{{ route('galeri') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -62,20 +65,19 @@
 @endsection
 
 @push('scripts')
-<script>
-    function previewImage()
-    {
-        const image = document.querySelector('#image');
-        const imgPreview = document.querySelector('.img-preview');
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
 
-        imgPreview.style.display = 'block';
+            imgPreview.style.display = 'block';
 
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
 
-        oFReader.onload = function(oFREvent){
-            imgPreview.src = oFREvent.target.result;
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
         }
-    }
-</script>
+    </script>
 @endpush

@@ -40,7 +40,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Keterangan</label>
-                                <input type="text" name="keterangan" class="form-control">
+                                <input type="text" name="keterangan" reuired class="form-control">
                             </div>
                             <a href="{{ route('galeri') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>

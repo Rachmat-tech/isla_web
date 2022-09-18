@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\StrukturOrganisasi;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 
 class StrukturOrganisasiController extends Controller
@@ -94,9 +95,35 @@ class StrukturOrganisasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = StrukturOrganisasi::find($id);
-        $data->update($request->all());
-        return redirect()->route('struktur');
+        $struktur = StrukturOrganisasi::findOrFail($id);
+        $request->validate([
+            'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/strukturOrganisasi-img/' . $struktur->foto)) {
+                    File::delete('storage/photos/strukturOrganisasi-img/' . $struktur->foto);
+                }
+
+                $nameFile = time() .  rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/strukturOrganisasi-img';
+                $request->foto->storeAs($path, $nameFile);
+                $struktur->foto = $nameFile;
+            }
+            // $pengurus->nama = $request->nama;
+            // $pengurus->jabatan = $request->jabatan;
+            // $pengurus->no_hp = $request->no_hp;
+            // $pengurus->motto = $request->motto;
+
+            $struktur->save();
+
+            DB::commit();
+            return redirect()->route('struktur');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -108,6 +135,9 @@ class StrukturOrganisasiController extends Controller
     public function destroy($id)
     {
         $data = StrukturOrganisasi::find($id);
+        if (File::exists('storage/photos/strukturOrganisasi-img/' . $data->foto)) {
+            File::delete('storage/photos/strukturOrganisasi-img/' . $data->foto);
+        }
         $data->delete();
         return redirect()->route('struktur')->with('success', 'data berhasil di hapus');
     }
