@@ -46,7 +46,7 @@
       <div class="logo">
         {{-- <h1><a href="index.html">ISLA UNHAS</a></h1> --}}
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="/"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
+        <a href="#hero"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
       </div>
 
       <!-- .navbar -->
@@ -108,14 +108,14 @@
                 <span>ISLA UNHAS</span>
               </a>
               <div class="social-links d-flex  mt-3">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                {{-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> --}}
+                <a href="https://web.facebook.com/isla.unhas.52" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/isla_unhas/" target="_blank"  class="instagram"><i class="bi bi-instagram"></i></a>
               </div>
             </div>
 
   
-            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <div class="col-lg-2 col-md-12 footer-contact text-center text-md-start">
               <h4>Our Address</h4>
               <p>
                 Ruko Angsana Park, Jalan Angsana Raya Blok R, Rajawati Timur<br>
@@ -124,11 +124,19 @@
               </p>
             </div>
   
-            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <div class="col-lg-2 col-md-12 footer-contact text-center text-md-start">
               <h4>Contact Us</h4>
               <p>
-                <strong>Phone:</strong> 021 7949227<br>
+                <strong>Phone:</strong> 021 794 9227<br>
                 <strong>Email:</strong> islaunhas@gmail.com<br>
+              </p>
+            </div>
+
+            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+              <h4>Donasi</h4>
+              <p>
+                <strong>2135-01-001255-53-6</strong><br>
+                <strong>BRI an ikatan sarjana kelautan universit</strong>
               </p>
             </div>
           </div>

@@ -9,7 +9,7 @@
           <div class="col-xl-4">
             <h2 data-aos="fade-up"><span style="color:#c5c079; background: none">I</span>KATAN <span style="color:#c5c079; background: none">S</span>ARJANA KE<span style="color:#c5c079; background: none">LA</span>UTAN UNHAS</h2>
             <blockquote data-aos="fade-up" data-aos-delay="100">
-              <p>JALAS VEVA JAYA MAHE</p>
+              <p>JALAS VEVA <br>JAYA MAHE</p>
             </blockquote>
             <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
               <a href="#contact" class="btn-get-started">Bergabung Bersama Kami</a>
@@ -34,14 +34,13 @@
         <div class="row content" data-aos="fade-up">
           <div class="col-lg-6">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Kemakmuran Kelautan kedua hal ini yang dipadukan dalam Logo dan Nama Organisasi alumni Ilmu Kelautan Universitas Hasanuddin, ISLA-UNHAS ( IKATAN SARJANA KELAUTAN) UNIVERSITAS HASANUDDIN. 
             </p>
             <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+              <li><i class="ri-check-double-line"></i> Nama ini dipilih dengan keyakinan akan pentingnya Kesatuan dan Persatuan menuju kemakmuran kelautan.</li>
+              <li><i class="ri-check-double-line"></i>  ISLA-UNHAS adalah wadah untuk kemakmuran anggota yang memiliki nilai solidaritas, harmonis, profesional, kemandirian dan kesejahteraan serta bertanggungjawab atas terwujudnya pembangunan kelautan, perikanan dan kemaritiman Indonesia.</li>
             </ul>
+            Jales veva jaya mahe
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             {{-- <div class="embed-responsive embed-responsive-16by9"> --}}
@@ -408,12 +407,14 @@
                 <input type="text" name="name" class="form-control" id="name" placeholder="Nama" required>
               </div>
               <div class="form-group mt-3">
-                <input type="date" class="form-control" name="date" id="date" placeholder="Tanggal Lahir" required>
+                <input type="number" class="form-control" name="subject" id="tahun" placeholder="Tahun Masuk" required>
               </div>
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="nim" placeholder="NIM" required>
+                <input type="text" name="pekerjaan" class="form-control" id="pekerjaan" placeholder="Pekerjaan" required>
               </div>
-              <br>
+              <div class="form-group mt-3">
+                <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Alamat" required>
+              </div>
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>

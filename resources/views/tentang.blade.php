@@ -27,23 +27,9 @@
             </div>
             <div class="col-lg-8">
               <div class="content ps-lg-5">
-                <h3>ISLA Merupakan</h3>
+                <h3>ISLA UNHAS</h3>
                 <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-                </p>
-                {{-- <ul>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                </ul> --}}
-              </div>
-              <br><br>
-              <div class="content ps-lg-5">
-                <h3>The Meaning of ISLA</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+                Didirikan oleh beberapa bahariwan sejati di Pulau Barrang Lompo Kota Makassar Pada tanggal 14 Agustus 1998 setelah beberapa bulan pasca agenda reformasi Indonesia. bahariwan sejati mengetahui pentingnya akan persatuan dan kesatuan alumni kelautan Universitas Hasanuddin  untuk membangun kelautan perikanan dan maritim Indonesia. 
                 </p>
               </div>
             </div>
@@ -63,11 +49,14 @@
                   <div class="box featured" data-aos="zoom-in" data-aos-delay="100">
                     <h3>Visi</h3>
                     <ul>
-                      <li>Aida dere</li>
-                      <li>Nec feugiat nisl</li>
-                      <li>Nulla at volutpat dola</li>
-                      <li>Pharetra massa</li>
-                      <li class="na">Massa ultricies mi</li>
+                      <li>Menghimpun para Sarjana Kelautan Universitas Hasanuddin dalam satu ikatan Alumni untuk turut berperan serta dalam memajukan kesejahteraan serta meningkatkan kecerdasan kehidupan masyarakat Indonesia.</li>
+                      <li>Menumbuhkan dan meningkatkan solidaritas dan Harmonisasi sesama anggota, mahasiswa dan masyarakat </li>
+                      <li>Membangun Sumber Daya Manusia Sarjana Kelautan Universitas Hasanuddin untuk meningkatkan-mengembangkan profesional, kemandirian dan kesejahteraan </li>
+                      <li>Berperan aktif dalam Pembangunan Kelautan, Perikanan dan Kemaritiman 
+                      </li>
+                      <li>Membina Hubungan Baik dengan Organisasi Sosial dan Profesi di bidang Kelautan, Perikanan dan Kemaritiman 
+                      </li>
+                      <li>Membangun kerjasama pengembangan IPTEK Kelautan, Perikanan dan Kemaritiman kepada kampus almamater</li>
                     </ul>
                   </div>
                 </div>
@@ -75,11 +64,11 @@
                   <div class="box featured" data-aos="zoom-in" data-aos-delay="100">
                     <h3>Misi</h3>
                     <ul>
-                      <li>Aida dere</li>
-                      <li>Nec feugiat nisl</li>
-                      <li>Nulla at volutpat dola</li>
-                      <li>Pharetra massa</li>
-                      <li class="na">Massa ultricies mi</li>
+                      <li>Mengusung spirit kolaborasi dengan memaksimalkan potensi dan jaringan para alumni sarjana kelautan Unhas.</li>
+                      <li>Membangun alumni kelautan untuk mendapatkan pekerjaan dengan memberikan informasi peluang kerja.
+                      </li>
+                      <li>Mengambil peran dan kontribusi dalam pembangunan kesejahteraan masyarakat pesisir dan kepulauan di Indonesia Timur
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -103,28 +92,34 @@
                 <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
                   <div class="box" data-aos="zoom-in" data-aos-delay="200">
                     <h4>1.</h4>
-                    <p>nan jigem derama bwayoo, jemogin isanghan pyeonhosa woo yong woo tuk paru ilgjo woo yong woo girogi, tomato, sewise, indoin, byuldongbyul wooo yong woo</p>
+                    <h5 style="color: #a09722">Beasiswa Alumni</h5>
+                    <p>Para anggota ISLA-UNHAS memiliki kesempatan yang sama untuk melanjutkan pendidikan dengan bantuan dari ISLA baik material dan nonmaterial.
+                    </p>
                   </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
                   <div class="box" data-aos="zoom-in" data-aos-delay="200">
                     <h4>2.</h4>
-                    <p>nan jigem derama bwayoo, jemogin isanghan pyeonhosa woo yong woo tuk paru ilgjo woo yong woo girogi, tomato, sewise, indoin, byuldongbyul wooo yong woo</p>
+                    <h5 style="color: #a09722">Networking </h5>
+                    <p>Para anggota ISLA-UNHAS bisa mendapatkan jaringan koneksi yang luas dengan para alumni yang tersebar di tingkat Lokal, Regional, Nasional dan Internasional. </p>
                   </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
                   <div class="box" data-aos="zoom-in" data-aos-delay="200">
                     <h4>3.</h4>
-                    <p>nan jigem derama bwayoo, jemogin isanghan pyeonhosa woo yong woo tuk paru ilgjo woo yong woo girogi, tomato, sewise, indoin, byuldongbyul wooo yong woo</p>
+                    <h5 style="color: #a09722">Collaboration Opportunity</h5>
+                    <p>Para anggota ISLA-UNHAS berkemungkinan melakukan kerjasama baik dalam bidang yang sama maupun antar multi bidang.
+                    </p>
                   </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
                   <div class="box" data-aos="zoom-in" data-aos-delay="200">
                     <h4>4.</h4>
-                    <p>nan jigem derama bwayoo, jemogin isanghan pyeonhosa woo yong woo tuk paru ilgjo woo yong woo girogi, tomato, sewise, indoin, byuldongbyul wooo yong woo</p>
+                    <h5 style="color: #a09722">Lowongan Kerja Alumni</h5>
+                    <p> Para ISLA-UNHAS akan mendapatkan pelayanan dan pengurusan siap kerja di perusahaan impian kamu.</p>
                   </div>
                 </div>
 

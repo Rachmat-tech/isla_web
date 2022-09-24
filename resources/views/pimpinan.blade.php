@@ -21,12 +21,12 @@
           <p>ISLA</p>
         </div>
 
-        <div class="row">
+        <div class="row" style="justify-content: center">
 
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up">
               <div class="member-img">
-                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                <img src="assets/img/team/ketua-umum.png" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -35,9 +35,9 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Walter White</h4>
-                <h6>Chief Executive Officer</h6>
-                <span>Motto : Hidup Bahagia</span>
+                <h4>DARWIS ISMAIL,ST.MM</h4>
+                <h6>Ketua Umum</h6>
+                <span>Motto : Dari ISLA UNHAs untuk Indonesia</span>
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
-                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                <img src="assets/img/team/sekretaris.png" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -54,9 +54,9 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <h6>Product Manager</h6>
-                <span>Motto : Hidup Bahagia</span>
+                <h4>CAHYADI RASYID,ST.,M.SI</h4>
+                <h6>Sekretaris Jenderal</h6>
+                <span>Motto : Ada banyak jalan menuju Tuhan, aku memilih jalan cinta</span>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="200">
               <div class="member-img">
-                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                <img src="assets/img/team/bendahara.png" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -73,14 +73,14 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>William Anderson</h4>
-                <h6>CTO</h6>
-                <span>Motto : Hidup Bahagia</span>
+                <h4>HIDAYAT AZIS,S.KEL.,M.SI</h4>
+                <h6>Bendahara Umum</h6>
+                <span>Motto : Indonesia Development</span>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          {{-- <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="300">
               <div class="member-img">
                 <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
@@ -97,7 +97,7 @@
                 <span>Motto : Hidup Bahagia</span>
               </div>
             </div>
-          </div>
+          </div> --}}
 
         </div>
 
