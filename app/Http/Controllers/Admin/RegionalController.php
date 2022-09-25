@@ -7,7 +7,7 @@ use App\Models\Regional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\StrukturOrganisasi;
+use Illuminate\Support\Facades\File;
 
 class RegionalController extends Controller
 {
@@ -100,7 +100,37 @@ class RegionalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $regional = Regional::findOrFail($id);
+        $request->validate([
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
+            'judul' => 'required',
+            'date_create' => 'required',
+            'isi' => 'required'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/regional-img/' . $regional->foto)) {
+                    File::delete('storage/photos/regional-img/' . $regional->foto);
+                }
+
+                $nameFile = time() .  rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/regional-img';
+                $request->foto->storeAs($path, $nameFile);
+                $regional->foto = $nameFile;
+            }
+            $regional->judul = $request->judul;
+            $regional->date_create = $request->date_create;
+            $regional->isi = $request->isi;
+
+            $regional->save();
+
+            DB::commit();
+            return redirect()->route('regional');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -112,6 +142,9 @@ class RegionalController extends Controller
     public function destroy($id)
     {
         $data = Regional::find($id);
+        if (File::exists('storage/photos/regional-img/' . $data->foto)) {
+            File::delete('storage/photos/regional-img/' . $data->foto);
+                }
         $data->delete();
         return redirect()->route('regional');
     }

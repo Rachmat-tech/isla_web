@@ -32,19 +32,19 @@
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Location</label>
-                                <input type="text" name="location" class="form-control">
+                                <input type="text" name="location" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="text" name="email"class="form-control">
+                                <input type="text" name="email" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Instagram</label>
-                                <input type="text" name="instagram" class="form-control">
+                                <input type="text" name="instagram" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Call</label>
-                                <input type="numeric" name="no_hp" class="form-control">
+                                <input type="numeric" name="no_hp" required class="form-control">
                             </div>
                             <a href="{{ route('contact') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>

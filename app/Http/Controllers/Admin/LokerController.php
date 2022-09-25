@@ -7,6 +7,7 @@ use App\Models\Loker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class LokerController extends Controller
 {
@@ -103,7 +104,41 @@ class LokerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $loker = Loker::findOrFail($id);
+        $request->validate([
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
+            'kategori' => 'required',
+            'perusahaan' => 'required',
+            'waktu_pendaftaran' => 'required',
+            'url' => 'required',
+            'isi' => 'required'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/loker-img/' . $loker->foto)) {
+                    File::delete('storage/photos/loker-img/' . $loker->foto);
+                }
+
+                $nameFile = time() .  rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/loker-img';
+                $request->foto->storeAs($path, $nameFile);
+                $loker->foto = $nameFile;
+            }
+            $loker->kategori = $request->kategori;
+            $loker->perusahaan = $request->perusahaan;
+            $loker->waktu_pendaftaran = $request->waktu_pendaftaran;
+            $loker->url = $request->url;
+            $loker->isi = $request->isi;
+
+            $loker->save();
+
+            DB::commit();
+            return redirect()->route('loker');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -115,6 +150,9 @@ class LokerController extends Controller
     public function destroy($id)
     {
         $data = Loker::find($id);
+        if (File::exists('storage/photos/loker-img/' . $data->foto)) {
+            File::delete('storage/photos/loker-img/' . $data->foto);
+        }
         $data->delete();
         return redirect()->route('loker');
     }

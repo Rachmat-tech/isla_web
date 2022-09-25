@@ -30,6 +30,7 @@
                     <div class="col-8">
                         <form action="{{ route('editnasional',$data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('post')
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
                                 @if ($data->foto)
@@ -41,19 +42,19 @@
                                 @error('foto')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
-                                <input type="file" name="foto" class="form-control" id="image" required accept=".jpg,.png,.jpeg" onchange="previewImage()">
+                                <input type="file" name="foto" class="form-control" id="image" accept=".jpg,.png,.jpeg" onchange="previewImage()">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Judul</label>
-                                <input type="text" name="judul" class="form-control" value="{{ $data->judul }}">
+                                <input type="text" name="judul" required class="form-control" value="{{ $data->judul }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Date</label>
-                                <input type="text" name="date_create" class="form-control" value="{{ $data->date_create }}">
+                                <input type="text" name="date_create" required class="form-control" value="{{ $data->date_create }}">
                             </div>
                             <div class="form-floating mb-2">
                                 <label for="floatingTextarea2">Isi Conten</label>
-                                <textarea name="isi" class="form-control">{!! $data->isi !!}</textarea>
+                                <textarea name="isi" required class="form-control">{!! $data->isi !!}</textarea>
                             </div>
                             <a href="{{ route('nasional') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>

@@ -40,19 +40,19 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Kategori</label>
-                                <input type="text" name="kategori" class="form-control">
+                                <input type="text" name="kategori" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Perusahaan</label>
-                                <input type="text" name="perusahaan" class="form-control">
+                                <input type="text" name="perusahaan" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Pendaftaran</label>
-                                <input type="text" name="waktu_pendaftaran" class="form-control">
+                                <input type="text" name="waktu_pendaftaran" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">URL</label>
-                                <input type="text" name="url" class="form-control">
+                                <input type="text" name="url" required class="form-control">
                             </div>
                             <div class="form-floating mb-2">
                                 <label for="floatingTextarea2">Isi Conten</label>

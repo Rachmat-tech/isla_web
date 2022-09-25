@@ -7,6 +7,7 @@ use App\Models\CeritaAlumni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class CeritaAlumniController extends Controller
 {
@@ -99,7 +100,37 @@ class CeritaAlumniController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $alumni = CeritaAlumni::findOrFail($id);
+        $request->validate([
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
+            'nama' => 'required',
+            'profesi' => 'required',
+            'isi' => 'required'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/ceritaAlumni-img/' . $alumni->foto)) {
+                    File::delete('storage/photos/ceritaAlumni-img/' . $alumni->foto);
+                }
+
+                $nameFile = time() .  rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/ceritaAlumni-img';
+                $request->foto->storeAs($path, $nameFile);
+                $alumni->foto = $nameFile;
+            }
+            $alumni->nama = $request->nama;
+            $alumni->profesi = $request->profesi;
+            $alumni->isi = $request->isi;
+
+            $alumni->save();
+
+            DB::commit();
+            return redirect()->route('cerita');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -111,6 +142,9 @@ class CeritaAlumniController extends Controller
     public function destroy($id)
     {
         $data = CeritaAlumni::find($id);
+        if (File::exists('storage/photos/ceritaAlumni-img/' . $data->foto)) {
+            File::delete('storage/photos/ceritaAlumni-img/' . $data->foto);
+        }
         $data->delete();
         return redirect()->route('cerita');
     }

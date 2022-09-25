@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/jqvmap/jqvmap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
@@ -41,13 +43,14 @@
         </div>
 
         <!-- Navbar -->
-        
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="{{route('jumbotron')}}" class="brand-link">
+            <!-- Login -->
+            <a href="{{ route('jumbotron') }}" class="brand-link">
                 <img src="{{ asset('AdminLTE/dist/img/logoisla.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Admin Isla</span>
@@ -64,7 +67,7 @@
                         <!-- Add icons to the links using the .nav-icon class
             ith font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="{{route('jumbotron')}}" class="nav-link">
+                            <a href="{{ route('jumbotron') }}" class="nav-link">
                                 <p>
                                     Dashboard
                                 </p>
@@ -98,7 +101,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('struktur')}}" class="nav-link">
+                                    <a href="{{ route('struktur') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Struktur Organisasi</p>
                                     </a>
@@ -138,7 +141,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>   
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <p>
@@ -160,7 +163,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> 
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <p>
@@ -197,7 +200,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('calon') }}" class="nav-link">
                                 <p>
                                     Calon Anggota
                                 </p>
@@ -211,125 +214,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-search"></i>
+                            <a href="{{ route('logout') }}" class="nav-link">
                                 <p>
-                                    Search
-                                    <i class="fas fa-angle-left right"></i>
+                                    <i class="bi bi-box-arrow-right"></i> Logout
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/search/simple.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Simple Search</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/search/enhanced.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Enhanced</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-                        <li class="nav-header">MISCELLANEOUS</li>
-                        <li class="nav-item">
-                            <a href="iframe.html" class="nav-link">
-                                <i class="nav-icon fas fa-ellipsis-h"></i>
-                                <p>Tabbed IFrame Plugin</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Documentation</p>
-                            </a>
-                        </li>
-                        <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>Level 1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-circle"></i>
-                                <p>
-                                    Level 1
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Level 2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            Level 2
-                                            <i class="right fas fa-angle-left"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="far fa-dot-circle nav-icon"></i>
-                                                <p>Level 3</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="far fa-dot-circle nav-icon"></i>
-                                                <p>Level 3</p>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="far fa-dot-circle nav-icon"></i>
-                                                <p>Level 3</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Level 2</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>Level 1</p>
-                            </a>
-                        </li>
-                        <li class="nav-header">LABELS</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle text-danger"></i>
-                                <p class="text">Important</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle text-warning"></i>
-                                <p>Warning</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-circle text-info"></i>
-                                <p>Informational</p>
-                            </a>
-                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -392,7 +283,7 @@
     {{-- <script src="{{asset('AdminLTE/dist/js/demo.js')}}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('AdminLTE/dist/js/pages/dashboard.js') }}"></script>
-    
+
     @stack('scripts')
 </body>
 

@@ -32,19 +32,19 @@
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control">
+                                <input type="text" name="nama" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control">
+                                <input type="text" name="jabatan" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">No Hp</label>
-                                <input type="numeric" name="no_hp" class="form-control">
+                                <input type="numeric" name="no_hp" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Motto</label>
-                                <input type="text" name="motto" class="form-control">
+                                <input type="text" name="motto" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>

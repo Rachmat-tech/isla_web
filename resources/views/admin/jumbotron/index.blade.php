@@ -13,10 +13,8 @@
 
                 </div><!-- /.col -->
             </div><!-- /.row -->
-
         </div><!-- /.container-fluid -->
     </div>
-
     <!-- /.content-header -->
     <section class="content">
         {{-- ingat hapus controller dan route --}}

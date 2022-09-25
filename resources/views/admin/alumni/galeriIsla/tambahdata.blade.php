@@ -24,7 +24,7 @@
     <section class="content">
         <div class="container-fluid">
 
-            
+
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
@@ -32,23 +32,27 @@
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
-                                <img class="img-preview img-fluid mb-3 col-sm-4" >
+                                <img class="img-preview img-fluid mb-3 col-sm-4">
                                 @error('foto')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
-                                <input type="file" name="foto" class="form-control" id="image" required accept=".jpg,.png,.jpeg" onchange="previewImage()">
+                                <input type="file" name="foto" class="form-control" id="image" required
+                                    accept=".jpg,.png,.jpeg" onchange="previewImage()">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Keterangan</label>
-                                <input type="text" name="keterangan" reuired class="form-control">
+                                <input type="text" name="keterangan" required class="form-control">
+                                @error('keterangan')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <a href="{{ route('galeri') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
-        
+
                         </form>
                     </div>
-        
-        
+
+
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -58,20 +62,19 @@
 @endsection
 
 @push('scripts')
-<script>
-    function previewImage()
-    {
-        const image = document.querySelector('#image');
-        const imgPreview = document.querySelector('.img-preview');
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
 
-        imgPreview.style.display = 'block';
+            imgPreview.style.display = 'block';
 
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
 
-        oFReader.onload = function(oFREvent){
-            imgPreview.src = oFREvent.target.result;
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
         }
-    }
-</script>
+    </script>
 @endpush

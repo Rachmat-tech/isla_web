@@ -40,15 +40,16 @@
                                     <img class="img-preview img-fluid mb-3 col-sm-4">
                                 @endif
 
-                                @error('foto')
-                                    <span class="text-danger"> {{ $message }}</span>
-                                @enderror
-                                <input type="file" name="foto" value="{{ $data->foto }}" class="form-control" id="image" accept=".jpg,.png,.jpeg" onchange="previewImage()">
+                                <input type="file" name="foto" value="{{ $data->foto }}" class="form-control"
+                                    id="image" accept=".jpg,.png,.jpeg" onchange="previewImage()">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Keterangan</label>
-                                <input type="text" name="keterangan" class="form-control"
+                                <input type="text" name="keterangan" required class="form-control"
                                     value="{{ $data->keterangan }}">
+                                @error('keterangan')
+                                    <span class="text-danger"> {{ $message }}</span>
+                                @enderror
                             </div>
                             <a href="{{ route('galeri') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>

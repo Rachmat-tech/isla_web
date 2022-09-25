@@ -40,11 +40,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control">
+                                <input type="text" name="nama" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Profesi</label>
-                                <input type="text" name="profesi" class="form-control">
+                                <input type="text" name="profesi" required class="form-control">
                             </div>
                             <div class="form-floating mb-2">
                                 <label for="floatingTextarea2">Isi Conten</label>

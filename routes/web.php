@@ -1,25 +1,25 @@
 <?php
 
-use App\Http\Controllers\Admin\AlumniAwardController;
-use App\Http\Controllers\Admin\BeritaKelautanController;
-use App\Http\Controllers\Admin\CeritaAlumniController;
-use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Admin\DocumentController;
-use App\Http\Controllers\Admin\GaleriIsla;
-use App\Http\Controllers\Admin\GaleriIslaController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\JumbotronController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LokerController;
-use App\Http\Controllers\Admin\NasionalController;
 use App\Http\Controllers\Admin\OpiniController;
-use App\Http\Controllers\Admin\PengurusWilayahController;
+use App\Http\Controllers\Admin\ContactController;
+
+use App\Http\Controllers\Admin\DocumentController;
+use App\Http\Controllers\Admin\NasionalController;
 use App\Http\Controllers\Admin\PimpinanController;
 use App\Http\Controllers\Admin\RegionalController;
+use App\Http\Controllers\Admin\JumbotronController;
+use App\Http\Controllers\Admin\GaleriIslaController;
+use App\Http\Controllers\Admin\AlumniAwardController;
 use App\Http\Controllers\Admin\StrukturMpoController;
+use App\Http\Controllers\Admin\CeritaAlumniController;
+use App\Http\Controllers\Admin\BeritaKelautanController;
+use App\Http\Controllers\Admin\CalonAnggotaController;
+use App\Http\Controllers\Admin\PengurusWilayahController;
 use App\Http\Controllers\Admin\StrukturOrganisasiController;
-use App\Models\GaleriIsla as ModelsGaleriIsla;
-use App\Models\StrukturMpo;
-use App\Models\StrukturOrganisasi;
+use App\Models\CalonAnggota;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,12 +33,19 @@ use App\Models\StrukturOrganisasi;
 */
 
 Route::get('/', function () {
-    return redirect()->route('jumbotron');
+    return redirect()->route('login');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+//login
+route::get('/admin', [AdminController::class, 'login'])->name('login');
+route::post('/login', [AdminController::class, 'authenticate'])->name('authenticate');
+route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    
+    
     //dashboard
-    Route::get('/jumbotron', [JumbotronController::class, 'index'])->name('jumbotron');
+    Route::get('/dashboard', [JumbotronController::class, 'index'])->name('jumbotron');
     Route::get('/tambahdata', [JumbotronController::class, 'create'])->name('tambahdatajumbotron');
     Route::post('/tambahdata', [JumbotronController::class, 'store'])->name('savedatajumbotron');
     Route::get('/editdata/{id}', [JumbotronController::class, 'edit'])->name('editdatajumbotron');
@@ -150,8 +157,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/tambahDocument', [DocumentController::class, 'create'])->name('tambahdocument');
     Route::post('/tambahDocument', [DocumentController::class, 'store'])->name('saveddocument');
     Route::get('/editDocument/{id}', [DocumentController::class, 'edit'])->name('editdocument');
-    Route::post('/editDocument/{document:id}', [DocumentController::class, 'update'])->name('updatedocument');
+    Route::post('/editDocument/{id}', [DocumentController::class, 'update'])->name('updatedocument');
+    // Route::post('/editDocument/{document:id}', [DocumentController::class, 'update'])->name('updatedocument');
     Route::get('/deleteDocument/{id}', [DocumentController::class, 'destroy'])->name('deletedocument');
+    
+    //calon anggota
+    Route::get('/calon-anggota', [CalonAnggotaController::class, 'index'])->name('calon');
+    // Route::get('/deleteCalon/{id}', [CalonAnggota::class, 'destroy'])->name('deletecalon');
     
     //Contact
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
@@ -163,7 +175,4 @@ Route::group(['prefix' => 'admin'], function () {
     
     //calon anggota
     // Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-    // Route::get('/deleteContact/{id}', [ContactController::class, 'destroy'])->name('deletecontact');
 });
-
-// route::get('/login', [admincontroler::class, 'login'])->name('login');

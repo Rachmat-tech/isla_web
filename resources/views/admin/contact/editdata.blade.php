@@ -32,19 +32,19 @@
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Location</label>
-                                <input type="text" name="location" class="form-control" value="{{ $data->location }}">
+                                <input type="text" name="location" class="form-control" required value="{{ $data->location }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="text" name="email" class="form-control" value="{{ $data->email }}">
+                                <input type="text" name="email" class="form-control" required value="{{ $data->email }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Instagram</label>
-                                <input type="text" name="instagram" class="form-control" value="{{ $data->instagram }}">
+                                <input type="text" name="instagram" class="form-control" required value="{{ $data->instagram }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Call</label>
-                                <input type="numeric" name="no_hp" class="form-control" value="{{ $data->no_hp }}">
+                                <input type="numeric" name="no_hp" class="form-control" required value="{{ $data->no_hp }}">
                             </div>
                             <a href="{{ route('contact') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>

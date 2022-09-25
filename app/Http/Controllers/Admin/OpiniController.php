@@ -7,6 +7,7 @@ use App\Models\Opini;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class OpiniController extends Controller
 {
@@ -99,7 +100,37 @@ class OpiniController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $opini = Opini::findOrFail($id);
+        $request->validate([
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
+            'judul' => 'required',
+            'date_create' => 'required',
+            'isi' => 'required'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/opini-img/' . $opini->foto)) {
+                    File::delete('storage/photos/opini-img/' . $opini->foto);
+                }
+
+                $nameFile = time() .  rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/opini-img';
+                $request->foto->storeAs($path, $nameFile);
+                $opini->foto = $nameFile;
+            }
+            $opini->judul = $request->judul;
+            $opini->date_create = $request->date_create;
+            $opini->isi = $request->isi;
+
+            $opini->save();
+
+            DB::commit();
+            return redirect()->route('opini');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -111,6 +142,9 @@ class OpiniController extends Controller
     public function destroy($id)
     {
         $data = Opini::find($id);
+        if (File::exists('storage/photos/opini-img/' . $data->foto)) {
+            File::delete('storage/photos/opini-img/' . $data->foto);
+        }
         $data->delete();
         return redirect()->route('opini');
     }

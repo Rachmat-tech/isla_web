@@ -24,35 +24,39 @@
     <section class="content">
         <div class="container-fluid">
 
-            
+
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
                         <form action="{{ route('saveddocument') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            
+
                             <div class="mb-3">
                                 <label class="form-label">Nama Document</label>
-                                <input type="text" name="nama_document" value="{{ old('nama_document') }}" required class="form-control">
+                                <input type="text" name="nama_document" required value="{{ old('nama_document') }}"
+                                    class="form-control">
+                                
                             </div>
+
                             <div class="mb-3">
                                 <label class="form-label">Deskripsi</label>
-                                <textarea class="form-control" name="desc_document" cols="30" rows="10">{{ old('desc_document') }}</textarea>
+                                <textarea class="form-control" name="desc_document" required cols="30" rows="10">{{ old('desc_document') }}</textarea>
+                    
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Document</label>
                                 @error('document')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
-                                <input type="file" name="document" class="form-control" required accept=".pdf">
+                                <input type="file" name="document" class="form-control" required value="{{ old('document') }}" accept=".pdf">
                             </div>
                             <a href="{{ route('document') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
-        
+
                         </form>
                     </div>
-        
-        
+
+
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -62,5 +66,4 @@
 @endsection
 
 @push('scripts')
-
 @endpush

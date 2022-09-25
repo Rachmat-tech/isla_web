@@ -43,7 +43,11 @@ class StrukturMpoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200'
+            'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200',
+            'nama' => 'required',
+            'jabatan' => 'required',
+            'no_hp' => 'required',
+            'motto' => 'required'
         ]);
         DB::beginTransaction();
         try {
@@ -100,7 +104,11 @@ class StrukturMpoController extends Controller
     {
         $mpo = StrukturMpo::findOrFail($id);
         $request->validate([
-            'foto' => 'image|mimes:jpg,png,jpeg|max:51200'
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
+            'nama' => 'required',
+            'jabatan' => 'required',
+            'no_hp' => 'required',
+            'motto' => 'required'
         ]);
         DB::beginTransaction();
         try {

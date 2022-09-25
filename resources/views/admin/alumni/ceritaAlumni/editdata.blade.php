@@ -28,8 +28,9 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form action="{{ route('editcerita',$data->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('updatecerita',$data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('post')
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
                                 @if ($data->foto)
@@ -41,15 +42,15 @@
                                 @error('foto')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
-                                <input type="file" name="foto" class="form-control" id="image" required accept=".jpg,.png,.jpeg" onchange="previewImage()">
+                                <input type="file" name="foto" class="form-control" id="image" accept=".jpg,.png,.jpeg" onchange="previewImage()">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control" value="{{ $data->nama }}">
+                                <input type="text" name="nama" class="form-control" required value="{{ $data->nama }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Profesi</label>
-                                <input type="text" name="profesi" class="form-control" value="{{ $data->profesi }}">
+                                <input type="text" name="profesi" class="form-control" required value="{{ $data->profesi }}">
                             </div>
                             <div class="form-floating mb-2">
                                 <label for="floatingTextarea2">Isi Conten</label>

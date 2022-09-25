@@ -28,18 +28,20 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">
-                        <form action="{{ route('updatedocument', ['document' => $document->id]) }}" method="POST"
+                        <form action="{{ route('updatedocument', $document->id) }}" method="POST"
                             enctype="multipart/form-data">
+                        {{-- <form action="{{ route('updatedocument', ['document' => $document->id]) }}" method="POST"
+                            enctype="multipart/form-data"> --}}
                             {{-- @method('PUT') --}}
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Nama Document</label>
-                                <input type="text" name="nama_document" class="form-control"
+                                <input type="text" name="nama_document" required class="form-control"
                                     value="{{ old('nama_document') != null ? old('nama_document') : $document->nama_document }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Deskripsi</label>
-                                <textarea class="form-control" name="desc_document" cols="30" rows="10">{{ old('desc_document') != null ? old('desc_document') : $document->deskripsi }}</textarea>
+                                <textarea class="form-control" required name="desc_document" cols="30" rows="10">{{ old('desc_document') != null ? old('desc_document') : $document->deskripsi }}</textarea>
                             </div>
 
                             <div class="mb-3">

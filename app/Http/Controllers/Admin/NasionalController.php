@@ -7,6 +7,7 @@ use App\Models\Nasional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class NasionalController extends Controller
 {
@@ -99,7 +100,37 @@ class NasionalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nasional = Nasional::findOrFail($id);
+        $request->validate([
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
+            'judul' => 'required',
+            'date_create' => 'required',
+            'isi' => 'required'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/nasional-img/' . $nasional->foto)) {
+                    File::delete('storage/photos/nasional-img/' . $nasional->foto);
+                }
+
+                $nameFile = time() .  rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/nasional-img';
+                $request->foto->storeAs($path, $nameFile);
+                $nasional->foto = $nameFile;
+            }
+            $nasional->judul = $request->judul;
+            $nasional->date_create = $request->date_create;
+            $nasional->isi = $request->isi;
+
+            $nasional->save();
+
+            DB::commit();
+            return redirect()->route('nasional');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -111,6 +142,9 @@ class NasionalController extends Controller
     public function destroy($id)
     {
         $data = Nasional::find($id);
+        if (File::exists('storage/photos/nasional-img/' . $data->foto)) {
+            File::delete('storage/photos/nasional-img/' . $data->foto);
+        }
         $data->delete();
         return redirect()->route('nasional');
     }

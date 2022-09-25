@@ -32,19 +32,19 @@
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control" value="{{ $data->nama }}">
+                                <input type="text" name="nama" class="form-control" required value="{{ $data->nama }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" value="{{ $data->jabatan }}">
+                                <input type="text" name="jabatan" class="form-control" required value="{{ $data->jabatan }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">No Hp</label>
-                                <input type="numeric" name="no_hp" class="form-control" value="{{ $data->no_hp }}">
+                                <input type="numeric" name="no_hp" class="form-control" required value="{{ $data->no_hp }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Motto</label>
-                                <input type="text" name="motto" class="form-control" value="{{ $data->motto }}">
+                                <input type="text" name="motto" class="form-control" required value="{{ $data->motto }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>

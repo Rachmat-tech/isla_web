@@ -30,6 +30,7 @@
                     <div class="col-8">
                         <form action="{{ route('editloker',$data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('post')
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
                                 @if ($data->foto)
@@ -41,23 +42,23 @@
                                 @error('foto')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
-                                <input type="file" name="foto" class="form-control" id="image" required accept=".jpg,.png,.jpeg" onchange="previewImage()">
+                                <input type="file" name="foto" class="form-control" id="image" accept=".jpg,.png,.jpeg" onchange="previewImage()">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Kategori</label>
-                                <input type="text" name="kategori" class="form-control" value="{{ $data->kategori }}">
+                                <input type="text" name="kategori" required class="form-control" value="{{ $data->kategori }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Perusahaan</label>
-                                <input type="text" name="perusahaan" class="form-control" value="{{ $data->perusahaan }}">
+                                <input type="text" name="perusahaan" required class="form-control" value="{{ $data->perusahaan }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Pendaftaran</label>
-                                <input type="text" name="waktu_pendaftaran" class="form-control" value="{{ $data->waktu_pendaftaran }}">
+                                <input type="text" name="waktu_pendaftaran" required class="form-control" value="{{ $data->waktu_pendaftaran }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">URL</label>
-                                <input type="text" name="url" class="form-control" value="{{ $data->url }}">
+                                <input type="text" name="url" required class="form-control" required value="{{ $data->url }}">
                             </div>
                             <div class="form-floating mb-2">
                                 <label for="floatingTextarea2">Isi Conten</label>

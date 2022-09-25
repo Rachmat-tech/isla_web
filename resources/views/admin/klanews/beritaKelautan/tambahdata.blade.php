@@ -40,15 +40,18 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Judul</label>
-                                <input type="text" name="judul" class="form-control">
+                                <input type="text" name="judul" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Date</label>
-                                <input type="text" name="date_create" class="form-control">
+                                <input type="text" name="date_create" required class="form-control">
                             </div>
                             <div class="form-floating mb-2">
                                 <label for="floatingTextarea2">Isi Conten</label>
                                 <textarea name="isi" class="form-control" ></textarea>
+                                @error('isi')
+                                    <span class="text-danger mt-1 mb-1">{{ $message }}</span>
+                                @enderror
                             </div>
                             <a href="{{ route('berita') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>

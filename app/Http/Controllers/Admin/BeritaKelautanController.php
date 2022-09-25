@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Error;
-use Illuminate\Http\Request;
+
 use App\Models\BeritaKelautan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class BeritaKelautanController extends Controller
 {
@@ -48,10 +50,10 @@ class BeritaKelautanController extends Controller
             'isi' => 'required'
         ]);
         DB::beginTransaction();
-        try{
+        try {
             $foto = $request->file('foto');
-            $name = time() .rand(1,10000) . '.' . $foto->extension();
-            $datafoto =[
+            $name = time() . rand(1, 10000) . '.' . $foto->extension();
+            $datafoto = [
                 'foto' => $name,
                 'judul' => $request->judul,
                 'date_create' => $request->date_create,
@@ -61,7 +63,7 @@ class BeritaKelautanController extends Controller
             $foto->move(public_path() . '/storage/photos/beritaKelautan-img', $name);
             DB::commit();
             return redirect()->route('berita');
-        } catch (Error $e){
+        } catch (Error $e) {
             DB::rollBack();
             dd($e);
         }
@@ -99,7 +101,37 @@ class BeritaKelautanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $berita = BeritaKelautan::findOrFail($id);
+        $request->validate([
+            'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
+            'judul' => 'required',
+            'date_create' => 'required',
+            'isi' => 'required'
+        ]);
+        DB::beginTransaction();
+        try {
+            if ($request->foto) {
+                if (File::exists('storage/photos/beritaKelautan-img/' . $berita->foto)) {
+                    File::delete('storage/photos/beritaKelautan-img/' . $berita->foto);
+                }
+
+                $nameFile = time() .  rand(1, 10000) . '.' . $request->file('foto')->extension();
+                $path = 'public/photos/beritaKelautan-img';
+                $request->foto->storeAs($path, $nameFile);
+                $berita->foto = $nameFile;
+            }
+            $berita->judul = $request->judul;
+            $berita->date_create = $request->date_create;
+            $berita->isi = $request->isi;
+
+            $berita->save();
+
+            DB::commit();
+            return redirect()->route('berita');
+        } catch (Error $e) {
+            DB::rollBack();
+            dd($e);
+        }
     }
 
     /**
@@ -111,6 +143,9 @@ class BeritaKelautanController extends Controller
     public function destroy($id)
     {
         $data = BeritaKelautan::find($id);
+        if (File::exists('storage/photos/beritaKelautan-img/' . $data->foto)) {
+            File::delete('storage/photos/beritaKelautan-img/' . $data->foto);
+            }
         $data->delete();
         return redirect()->route('berita');
     }

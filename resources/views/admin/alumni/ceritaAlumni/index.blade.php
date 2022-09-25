@@ -55,9 +55,11 @@
                                 <td class="profesi">{{ $item->profesi }}</td>
                                 <td>
                                     <a href="{{ route('editcerita', $item->id) }}" class="btn btn-info">Edit</a>
+
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                         data-title="{{ $item->nama }}" data-isi="{{ $item->isi }}"
                                         class="btn btn-warning btn-show-cerita">Detail</button>
+                                        
                                     <a href="{{ route('deletecerita', $item->id) }}" class="btn btn-danger delete"
                                         data-id="{{ $item->id }}" data-foto="{{ $item->foto }}">Delete</a>
                                 </td>
