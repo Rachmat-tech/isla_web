@@ -35,20 +35,21 @@
                                 <label class="form-label">Nama Document</label>
                                 <input type="text" name="nama_document" required value="{{ old('nama_document') }}"
                                     class="form-control">
-                                
+
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Deskripsi</label>
                                 <textarea class="form-control" name="desc_document" required cols="30" rows="10">{{ old('desc_document') }}</textarea>
-                    
+
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Document</label>
                                 @error('document')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
-                                <input type="file" name="document" class="form-control" required value="{{ old('document') }}" accept=".pdf">
+                                <input type="file" name="document" class="form-control" required
+                                    value="{{ old('document') }}" accept=".pdf,.docx">
                             </div>
                             <a href="{{ route('document') }}" class="btn btn-secondary">Cencel</a>
                             <button type="submit" class="btn btn-primary">Submit</button>

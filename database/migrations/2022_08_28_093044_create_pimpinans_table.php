@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('foto');
             $table->string('nama');
             $table->string('jabatan');
-            $table->bigInteger('no_hp');
-            $table->string('motto');
+            // $table->bigInteger('no_hp');
+            // $table->string('motto');
             $table->timestamps();
         });
     }

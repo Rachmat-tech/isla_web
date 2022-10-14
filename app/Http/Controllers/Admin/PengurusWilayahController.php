@@ -52,9 +52,9 @@ class PengurusWilayahController extends Controller
             $datafoto = [
                 'foto' => $name,
                 'nama' => $request->nama,
-                'jabatan' => $request->jabatan,
-                'no_hp' => $request->no_hp,
-                'motto' => $request->motto
+                'jabatan' => $request->jabatan
+                // 'no_hp' => $request->no_hp,
+                // 'motto' => $request->motto
             ];
             PengurusWilayah::create($datafoto);
             $foto->move(public_path() . '/storage/photos/pengurusWilayah-img', $name);
@@ -102,9 +102,9 @@ class PengurusWilayahController extends Controller
         $request->validate([
             'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
             'nama' => 'required',
-            'jabatan' => 'required',
-            'no_hp' => 'required',
-            'motto' => 'required'
+            'jabatan' => 'required'
+            // 'no_hp' => 'required',
+            // 'motto' => 'required'
         ]);
         DB::beginTransaction();
         try {
@@ -120,8 +120,8 @@ class PengurusWilayahController extends Controller
             }
             $pengurus->nama = $request->nama;
             $pengurus->jabatan = $request->jabatan;
-            $pengurus->no_hp = $request->no_hp;
-            $pengurus->motto = $request->motto;
+            // $pengurus->no_hp = $request->no_hp;
+            // $pengurus->motto = $request->motto;
 
             $pengurus->save();
 

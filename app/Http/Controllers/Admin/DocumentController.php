@@ -38,7 +38,7 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'document' => 'required|file|mimes:pdf',
+            'document' => 'required|file|mimes:pdf,docx',
             'nama_document' => 'required',
             'desc_document' => 'required'
         ]);
@@ -119,7 +119,7 @@ class DocumentController extends Controller
         //         DB::rollBack();
         //         dd($e);
         //     }
-//batas
+        //batas
         // $doc = Document::findOrFail($id);
         // $request->validate([
         //     'document' => 'file|mimes:pdf',

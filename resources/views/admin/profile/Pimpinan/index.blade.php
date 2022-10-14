@@ -33,8 +33,6 @@
                             <th scope="col">Image</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Jabatan</th>
-                            <th scope="col">No Hp</th>
-                            <th scope="col">Motto</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -52,8 +50,8 @@
                             </td>
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->jabatan }}</td>
-                            <td>0{{ $item->no_hp }}</td>
-                            <td>{{ $item->motto }}</td>
+                            {{-- <td>0{{ $item->no_hp }}</td>
+                            <td>{{ $item->motto }}</td> --}}
                             <td>
                                 <a href="{{ route('editpimpinan', $item->id) }}" class="btn btn-info">Edit</a>
                                 <a href="{{ route('deletepimpinan', $item->id) }}" class="btn btn-danger delete" data-id="{{ $item->id }}" data-foto="{{ $item->foto }}">Delete</a>
