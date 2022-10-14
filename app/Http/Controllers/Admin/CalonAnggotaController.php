@@ -84,8 +84,8 @@ class CalonAnggotaController extends Controller
      */
     public function destroy($id)
     {
-        // $data = CalonAnggota::find($id);
-        // $data->delete();
-        // return redirect()->route('calon');
+        $data = CalonAnggota::find($id);
+        $data->delete();
+        return redirect()->route('calon');
     }
 }

@@ -21,6 +21,10 @@ use App\Http\Controllers\Admin\PengurusWilayahController;
 use App\Http\Controllers\Admin\StrukturOrganisasiController;
 use App\Models\CalonAnggota;
 
+use App\Http\Controllers\{
+    User\HomeController,
+};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,25 +46,25 @@ route::post('/login', [AdminController::class, 'authenticate'])->name('authentic
 route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    
-    
+
+
     //dashboard
     Route::get('/dashboard', [JumbotronController::class, 'index'])->name('jumbotron');
     Route::get('/tambahdata', [JumbotronController::class, 'create'])->name('tambahdatajumbotron');
     Route::post('/tambahdata', [JumbotronController::class, 'store'])->name('savedatajumbotron');
     Route::get('/editdata/{id}', [JumbotronController::class, 'edit'])->name('editdatajumbotron');
-    Route::post('/editdata/{id}', [JumbotronController::class, 'update'])->name('updatedatajumbotron');    
+    Route::post('/editdata/{id}', [JumbotronController::class, 'update'])->name('updatedatajumbotron');
     Route::get('/deletedata/{id}', [JumbotronController::class, 'delete'])->name('deletedatajumbotron');
-    
+
     //#profile
     //pimpinan
     Route::get('/pimpinanIsla', [PimpinanController::class, 'index'])->name('pimpinan');
-    Route::get('/tambahPimpinan', [PimpinanController::class,'create'])->name('tambahpimpinan');
-    Route::post('/tambahPimpinan', [PimpinanController::class,'store'])->name('savedpimpinan');
-    Route::get('/editPimpinan/{id}', [PimpinanController::class,'edit'])->name('editpimpinan');
-    Route::post('/editPimpinan/{id}', [PimpinanController::class,'update'])->name('updatepimpinan');
-    Route::get('/deletePimpinan/{id}', [PimpinanController::class,'destroy'])->name('deletepimpinan');
-    
+    Route::get('/tambahPimpinan', [PimpinanController::class, 'create'])->name('tambahpimpinan');
+    Route::post('/tambahPimpinan', [PimpinanController::class, 'store'])->name('savedpimpinan');
+    Route::get('/editPimpinan/{id}', [PimpinanController::class, 'edit'])->name('editpimpinan');
+    Route::post('/editPimpinan/{id}', [PimpinanController::class, 'update'])->name('updatepimpinan');
+    Route::get('/deletePimpinan/{id}', [PimpinanController::class, 'destroy'])->name('deletepimpinan');
+
     //MPO
     Route::get('/strukturMpo', [StrukturMpoController::class, 'index'])->name('mpo');
     Route::get('/tambahMpo', [StrukturMpoController::class, 'create'])->name('tambahmpo');
@@ -68,15 +72,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/editMpo/{id}', [StrukturMpoController::class, 'edit'])->name('editmpo');
     Route::post('/editMpo/{id}', [StrukturMpoController::class, 'update'])->name('updatempo');
     Route::get('/deleteMpo/{id}', [StrukturMpoController::class, 'destroy'])->name('deletempo');
-    
+
     //struktur organisasi
     Route::get('/strukturOrganisasi', [StrukturOrganisasiController::class, 'index'])->name('struktur');
     Route::get('/tambahStruktur', [StrukturOrganisasiController::class, 'create'])->name('tambahstruktur');
-    Route::post('/tambahStruktur', [StrukturOrganisasiController::class, 'store'])->name('savedstruktur');    
+    Route::post('/tambahStruktur', [StrukturOrganisasiController::class, 'store'])->name('savedstruktur');
     Route::get('/editStruktur/{id}', [StrukturOrganisasiController::class, 'edit'])->name('editstruktur');
     Route::post('/editStruktur/{id}', [StrukturOrganisasiController::class, 'update'])->name('updatestruktur');
     Route::get('/deleteStruktur/{id}', [StrukturOrganisasiController::class, 'destroy'])->name('deletestruktur');
-    
+
     //pengurus Wilayah
     Route::get('/pengurusWilayah', [PengurusWilayahController::class, 'index'])->name('pengurus');
     Route::get('/tambahpengurus', [PengurusWilayahController::class, 'create'])->name('tambahpengurus');
@@ -118,7 +122,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/editnasional/{id}', [NasionalController::class, 'edit'])->name('editnasional');
     Route::post('/editnasional/{id}', [NasionalController::class, 'update'])->name('updatenasional');
     Route::get('/deletenasional/{id}', [NasionalController::class, 'destroy'])->name('deletenasional');
-    
+
     //regional
     Route::get('/prokerregional', [RegionalController::class, 'index'])->name('regional');
     Route::get('/tambahregional', [RegionalController::class, 'create'])->name('tambahregional');
@@ -126,7 +130,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/editregional/{id}', [RegionalController::class, 'edit'])->name('editregional');
     Route::post('/editregional/{id}', [RegionalController::class, 'update'])->name('updateregional');
     Route::get('/deleteregional/{id}', [RegionalController::class, 'destroy'])->name('deleteregional');
-    
+
     //#Alumni
     //alumni award
     Route::get('/alumniAward', [AlumniAwardController::class, 'index'])->name('alumni');
@@ -135,7 +139,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/editAlumni/{id}', [AlumniAwardController::class, 'edit'])->name('editaward');
     Route::post('/editAlumni/{id}', [AlumniAwardController::class, 'update'])->name('updateaward');
     Route::get('/deleteAlumni/{id}', [AlumniAwardController::class, 'destroy'])->name('deleteaward');
-    
+
     //Galeri Isla
     Route::get('/galeriIslah', [GaleriIslaController::class, 'index'])->name('galeri');
     Route::get('/tambahGaleri', [GaleriIslaController::class, 'create'])->name('tambahgaleri');
@@ -151,7 +155,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/editCerita/{id}', [CeritaAlumniController::class, 'edit'])->name('editcerita');
     Route::post('/editCerita/{id}', [CeritaAlumniController::class, 'update'])->name('updatecerita');
     Route::get('/deleteCerita/{id}', [CeritaAlumniController::class, 'destroy'])->name('deletecerita');
-    
+
     //Document
     Route::get('/document', [DocumentController::class, 'index'])->name('document');
     Route::get('/tambahDocument', [DocumentController::class, 'create'])->name('tambahdocument');
@@ -160,11 +164,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/editDocument/{id}', [DocumentController::class, 'update'])->name('updatedocument');
     // Route::post('/editDocument/{document:id}', [DocumentController::class, 'update'])->name('updatedocument');
     Route::get('/deleteDocument/{id}', [DocumentController::class, 'destroy'])->name('deletedocument');
-    
+
     //calon anggota
     Route::get('/calon-anggota', [CalonAnggotaController::class, 'index'])->name('calon');
-    // Route::get('/deleteCalon/{id}', [CalonAnggota::class, 'destroy'])->name('deletecalon');
-    
+    Route::get('/deleteCalon/{id}', [CalonAnggotaController::class, 'destroy'])->name('deletecalon');
+
     //Contact
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::get('/tambahContact', [ContactController::class, 'create'])->name('tambahcontact');
@@ -172,7 +176,28 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/editContact/{id}', [ContactController::class, 'edit'])->name('editcontact');
     Route::post('/editContact/{id}', [ContactController::class, 'update'])->name('updatecontact');
     Route::get('/deleteContact/{id}', [ContactController::class, 'destroy'])->name('deletecontact');
-    
+
     //calon anggota
     // Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 });
+
+
+// Route for landing page
+Route::get('/', [HomeController::class, 'index'])->name('home.page');
+Route::get('/berita', [HomeController::class, 'berita'])->name('home.page');
+Route::get('/pimpinan', [HomeController::class, 'pimpinan'])->name('home.page');
+Route::get('/mpo', [HomeController::class, 'mpo'])->name('home.page');
+Route::get('/organisasi', [HomeController::class, 'organisasi'])->name('home.page');
+Route::get('/wilayah', [HomeController::class, 'wilayah'])->name('home.page');
+Route::get('/tentang', [HomeController::class, 'tentang'])->name('home.page');
+Route::get('/alumni', [HomeController::class, 'alumni'])->name('home.page');
+Route::get('/contact', [HomeController::class, 'contact'])->name('home.page');
+Route::get('/document', [HomeController::class, 'document'])->name('home.page');
+Route::get('/formulir', [HomeController::class, 'formulir'])->name('home.page');
+Route::get('/galeri', [HomeController::class, 'galeri'])->name('home.page');
+Route::get('/opini', [HomeController::class, 'opini'])->name('home.page');
+Route::get('/proker-nasional', [HomeController::class, 'prokerNasional'])->name('home.page');
+Route::get('/proker-regional', [HomeController::class, 'prokerRegional'])->name('home.page');
+Route::get('/loker', [HomeController::class, 'loker'])->name('home.page');
+Route::get('/loker-detail', [HomeController::class, 'lokerDetail'])->name('home.page');
+Route::post('/pendaftaran', [HomeController::class, 'pendaftaran'])->name('submit.pendaftaran');

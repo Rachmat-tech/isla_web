@@ -38,14 +38,14 @@
                                 <label class="form-label">Jabatan</label>
                                 <input type="text" name="jabatan" required class="form-control">
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label class="form-label">No Hp</label>
                                 <input type="numeric" name="no_hp" required class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Motto</label>
                                 <input type="text" name="motto" required class="form-control">
-                            </div>
+                            </div> --}}
                             <div class="mb-3">
                                 <label class="form-label">Input Foto</label>
                                 <img class="img-preview img-fluid mb-3 col-sm-4">

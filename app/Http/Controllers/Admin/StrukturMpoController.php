@@ -45,9 +45,9 @@ class StrukturMpoController extends Controller
         $request->validate([
             'foto' => 'required|image|mimes:jpg,png,jpeg|max:51200',
             'nama' => 'required',
-            'jabatan' => 'required',
-            'no_hp' => 'required',
-            'motto' => 'required'
+            'jabatan' => 'required'
+            // 'no_hp' => 'required',
+            // 'motto' => 'required'
         ]);
         DB::beginTransaction();
         try {
@@ -56,9 +56,9 @@ class StrukturMpoController extends Controller
             $datafoto = [
                 'foto' => $name,
                 'nama' => $request->nama,
-                'jabatan' => $request->jabatan,
-                'no_hp' => $request->no_hp,
-                'motto' => $request->motto
+                'jabatan' => $request->jabatan
+                // 'no_hp' => $request->no_hp,
+                // 'motto' => $request->motto
             ];
             StrukturMpo::create($datafoto);
             $foto->move(public_path() . '/storage/photos/mpo-img', $name);
@@ -106,9 +106,9 @@ class StrukturMpoController extends Controller
         $request->validate([
             'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
             'nama' => 'required',
-            'jabatan' => 'required',
-            'no_hp' => 'required',
-            'motto' => 'required'
+            'jabatan' => 'required'
+            // 'no_hp' => 'required',
+            // 'motto' => 'required'
         ]);
         DB::beginTransaction();
         try {
@@ -124,8 +124,8 @@ class StrukturMpoController extends Controller
             }
             $mpo->nama = $request->nama;
             $mpo->jabatan = $request->jabatan;
-            $mpo->no_hp = $request->no_hp;
-            $mpo->motto = $request->motto;
+            // $mpo->no_hp = $request->no_hp;
+            // $mpo->motto = $request->motto;
 
             $mpo->save();
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('ttl');
             $table->string('angkatan');
             $table->integer('tahun_lulus');
+            $table->bigInteger('no_hp');
             $table->timestamps();
         });
     }

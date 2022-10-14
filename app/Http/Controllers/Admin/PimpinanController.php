@@ -53,9 +53,9 @@ class PimpinanController extends Controller
             $datafoto = [
                 'foto' => $name,
                 'nama' => $request->nama,
-                'jabatan' => $request->jabatan,
-                'no_hp' => $request->no_hp,
-                'motto' => $request->motto
+                'jabatan' => $request->jabatan
+                // 'no_hp' => $request->no_hp,
+                // 'motto' => $request->motto
             ];
             Pimpinan::create($datafoto);
             $foto->move(public_path() . '/storage/photos/pimpinan-img', $name);
@@ -103,9 +103,9 @@ class PimpinanController extends Controller
         $request->validate([
             'foto' => 'image|mimes:jpg,png,jpeg|max:51200',
             'nama' => 'required',
-            'jabatan' => 'required',
-            'no_hp' => 'required',
-            'motto' => 'required'
+            'jabatan' => 'required'
+            // 'no_hp' => 'required',
+            // 'motto' => 'required'
         ]);
         DB::beginTransaction();
         try {
@@ -121,8 +121,8 @@ class PimpinanController extends Controller
             }
             $pimpinan->nama = $request->nama;
             $pimpinan->jabatan = $request->jabatan;
-            $pimpinan->no_hp = $request->no_hp;
-            $pimpinan->motto = $request->motto;
+            // $pimpinan->no_hp = $request->no_hp;
+            // $pimpinan->motto = $request->motto;
 
             $pimpinan->save();
 
