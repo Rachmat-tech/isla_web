@@ -30,6 +30,7 @@
                                 <div class="member-info">
                                     <h4>{{ $item->nama }}</h4>
                                     <h6>{{ $item->jabatan }}</h6>
+                                    {{-- <span>{{ $item->motto }}</span> --}}
                                     <span>{{ $item->motto }}</span>
                                 </div>
                             </div>
